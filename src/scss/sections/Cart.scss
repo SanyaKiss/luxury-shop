@@ -1,0 +1,81 @@
+@import "../variables.scss";
+
+.cart {
+  &-thead {
+    margin: 25px 22px;
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &__product {
+      margin-right: 250px;
+      @media (max-width: $sm) {
+        margin-right: 0;
+      }
+    }
+  }
+  &-product {
+    margin: 30px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @media (max-width: $sm) {
+      flex-wrap: wrap;
+      position: relative;
+      &__title{
+        align-self: flex-start;
+      }
+      &__price{
+        position: absolute;
+        left: 34%;
+        top: 80%;
+      }
+      &__remove-btn {
+        position: absolute;
+        left: 85%;
+        bottom: 90%;
+      }
+      &__unit-price {
+        display: none;
+      }
+      &__counter{
+        align-self: flex-end;
+      }
+    }
+    &__img {
+      width: 100px;
+    }
+  }
+  &-check {
+    display: flex;
+    justify-content: space-between;
+    margin: 70px 40px;
+    @media (max-width: $sm) {
+      flex-direction: column;
+      margin: 30px 30px;
+      gap:30px
+    }
+  }
+  .total {
+    min-width: 310px;
+    min-height: 310px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    &__line {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+  hr {
+    opacity: 30%;
+  }
+}
+
+@media (max-width: $sm) {
+  .voucher-input {
+    display: flex;
+    flex-wrap: nowrap;
+    max-width: 250px;
+  }
+}

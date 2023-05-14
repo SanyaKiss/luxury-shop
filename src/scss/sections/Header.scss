@@ -1,0 +1,110 @@
+@import '../variables.scss';
+
+.header {
+  margin: 0 20px;
+
+  &__top {
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  &__search,
+  &__cart {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+
+    @media (max-width: $sm) {
+      display: none;
+    }
+  }
+
+  &__title {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 30px;
+    justify-self: center;
+    transition: all 0.3s ease-out 0s;
+    border-bottom: 1px solid transparent;
+
+    &:hover {
+      color: #000;
+      border-color: #000;
+    }
+
+    @media (max-width: $sm) {
+      justify-self: start;
+    }
+  }
+
+  &__navbar {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__about,
+  &__products {
+    font-family: $satoshi;
+    color: #726e8d;
+    margin-right: 24px;
+    transition: all 0.3s ease-out 0s;
+    border-bottom: 1px solid transparent;
+
+    &:hover {
+      color: #000;
+      border-color: #000;
+    }
+
+    @media (max-width: $sm) {
+      margin-right: 6px;
+      // display: none;
+    }
+  }
+
+  &__menu {
+    display: none;
+    width: 24px;
+    height: 24px;
+
+    @media (max-width: $sm) {
+      display: block;
+    }
+  }
+
+  &__bottom {
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media (max-width: $md) {
+      display: none;
+    }
+  }
+
+  &__links {
+    display: flex;
+    gap: 44px;
+  }
+
+  &__link {
+    font-family: $satoshi;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    color: $gray;
+    cursor: pointer;
+    transition: all 0.3s ease-out 0s;
+    border-bottom: 1px solid transparent;
+
+    &:hover {
+      color: #000;
+      border-color: #000;
+    }
+  }
+}

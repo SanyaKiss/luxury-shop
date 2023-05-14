@@ -1,0 +1,26 @@
+@import '../variables.scss';
+
+.product {
+  display: flex;
+  flex-direction: column;
+
+  &__img {
+    object-fit: contain;
+    max-width: 100%;
+    cursor: pointer;
+  }
+
+  &__title {
+    margin-top: 24px;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 140%;
+  }
+
+  &__price {
+    font-family: $satoshi;
+    margin-top: 8px;
+    font-size: 18px;
+    line-height: 150%;
+  }
+}

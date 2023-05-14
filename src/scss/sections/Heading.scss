@@ -1,0 +1,18 @@
+@import '../variables.scss';
+
+.heading {
+  max-width: 705px;
+  margin: 100px auto;
+  padding: 0 30px;
+
+  &__title {
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 140%;
+    text-align: center;
+
+    @media (max-width: $md) {
+      font-size: 28px;
+    }
+  }
+}

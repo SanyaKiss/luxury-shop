@@ -1,0 +1,116 @@
+@import '../variables.scss';
+
+.filters {
+  margin: 25px 100px;
+
+  @media (max-width: $md) {
+    margin: 20px 30px;
+  }
+
+  &__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
+    @media (max-width: $sm) {
+      justify-content: space-between;
+    }
+  }
+
+  &__category,
+  &__sorting {
+    width: 190px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    @media (max-width: $md) {
+      gap: 8px;
+    }
+
+    @media (max-width: $sm) {
+      width: 110px;
+      flex-direction: column;
+      align-items: start;
+    }
+  }
+
+  &__popup {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+  }
+}
+
+.popup {
+  position: relative;
+  transition: all 0.3s ease 0s;
+
+  &__title,
+  &__subtitle {
+    font-family: $satoshi;
+    line-height: 150%;
+
+    @media (max-width: $sm) {
+      font-size: 20px;
+    }
+  }
+
+  &__variants,
+  &__variants--hidden {
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    padding: 10px;
+    background: #ffffff;
+    position: absolute;
+    top: 30px;
+    left: -20px;
+    transition: all 0.5s ease 0s;
+    opacity: 1;
+  }
+
+  &__variants--hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  &__variant,
+  &__variant--active {
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-family: $satoshi;
+    line-height: 150%;
+    background: #ffffff;
+    cursor: pointer;
+
+    @media (max-width: $sm) {
+      font-size: 20px;
+    }
+
+    &:hover {
+      transition: all 0.5s ease 0s;
+      color: #fff;
+      background: $primary;
+    }
+  }
+
+  &__variant--active {
+    color: #fff;
+    background: $primary;
+  }
+
+  &__arrow,
+  &__arrow--flipped {
+    width: 16px;
+    height: 16px;
+    transition: all 0.3s ease 0s;
+    transform: rotate(0deg);
+  }
+
+  &__arrow--flipped {
+    transform: rotate(180deg);
+  }
+}
