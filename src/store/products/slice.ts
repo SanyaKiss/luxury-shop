@@ -12,7 +12,7 @@ export const fetchProducts = createAsyncThunk(
   'products/fetchProducts',
   async (params: FetchParams) => {
     const { data } = await axios.get<Product[]>(
-      `https://6403a6883bdc59fa8f2a61db.mockapi.io/products${params.args}`
+      `https://637374ac348e9472990cef38.mockapi.io/products${params.args}`
     );
 
     if (params.shuffled) return shuffle([...data]);

@@ -20,7 +20,7 @@ const ProductBlock: React.FC = () => {
     async function fetchProduct() {
       try {
         const { data } = await axios.get<Product>(
-          `https://6403a6883bdc59fa8f2a61db.mockapi.io/products/${id}`
+          `https://637374ac348e9472990cef38.mockapi.io/products/${id}`
         );
         setProduct(data);
       } catch (error) {
