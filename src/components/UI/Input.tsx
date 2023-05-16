@@ -28,7 +28,7 @@ const Input: React.FC<InputProps> = (props) => {
 
   const styles = {
     border: "none",
-    padding: "16px 32px",
+    padding: "18px 32px",
     fontSize: "16px",
     flexGrow: "1",
     color,

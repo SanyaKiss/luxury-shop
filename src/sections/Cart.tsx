@@ -23,11 +23,11 @@ export const Cart: React.FC = () => {
 
   return (
     <div className="cart">
-      <div className="cart-thead">
-        <p className="cart-thead__product content ">PRODUCT</p>
-        <p className="cart-thead__price price column">PRICE</p>
-        <p className="cart-thead__quantity quantity  column">QTY</p>
-        <p className="cart-thead__unit-price unit-price  column">UNIT PRICE</p>
+      <div className="cart-heading">
+        <p className="cart-heading__product content ">PRODUCT</p>
+        <p className="cart-heading__price price column">PRICE</p>
+        <p className="cart-heading__quantity quantity  column">QTY</p>
+        <p className="cart-heading__unit-price unit-price  column">UNIT PRICE</p>
       </div>
       <div className="cart-products">
         {cart.map((item: CartItem) => (
@@ -42,9 +42,7 @@ export const Cart: React.FC = () => {
               <div className="cart-product__img">
                 <img src={item.product.imgUrl} alt="" />
               </div>
-              <div className="cart-product__body">
                 <div className="cart-product__title ">{item.product.title}</div>
-              </div>
             </div>
             <div className="cart-product__price price column ">
               $ {item.product.price}
@@ -82,7 +80,6 @@ export const Cart: React.FC = () => {
             <p>Coupon</p>
             <p>No</p>
           </div>
-          <hr />
           <div className="total__line">
             <h2>TOTAL</h2>
             <h2>${totalPrice}</h2>
