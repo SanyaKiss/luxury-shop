@@ -11,7 +11,10 @@
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   }
 
-  &__search,
+  &__input{
+    display: none;
+  }
+
   &__cart {
     width: 24px;
     height: 24px;
@@ -61,7 +64,6 @@
 
     @media (max-width: $sm) {
       margin-right: 6px;
-      // display: none;
     }
   }
 
