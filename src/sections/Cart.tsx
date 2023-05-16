@@ -23,14 +23,12 @@ export const Cart: React.FC = () => {
 
   return (
     <div className="cart">
-      <Modal isOpen={isOpen} onClose={toggleDialog} />
       <div className="cart-thead">
-        <p className="cart-thead__product">PRODUCT</p>
-        <p>PRICE</p>
-        <p>QTY</p>
-        <p>UNIT PRICE</p>
+        <p className="cart-thead__product content ">PRODUCT</p>
+        <p className="cart-thead__price price column">PRICE</p>
+        <p className="cart-thead__quantity quantity  column">QTY</p>
+        <p className="cart-thead__unit-price unit-price  column">UNIT PRICE</p>
       </div>
-      <hr />
       <div className="cart-products">
         {cart.map((item: CartItem) => (
           <div className="cart-product" key={item.product.id}>
@@ -40,20 +38,24 @@ export const Cart: React.FC = () => {
               onClick={() => handleRemove(item)}
               className="cart-product__remove-btn"
             />
-            <img
-              src={item.product.imgUrl}
-              alt=""
-              className="cart-product__img"
-            />
-            <p className="cart-product__title">{item.product.title}</p>
-            <p className="cart-product__price">$ {item.product.price}</p>
-            <div className="cart-product__counter">
+            <div className="cart-product__content content ">
+              <div className="cart-product__img">
+                <img src={item.product.imgUrl} alt="" />
+              </div>
+              <div className="cart-product__body">
+                <div className="cart-product__title ">{item.product.title}</div>
+              </div>
+            </div>
+            <div className="cart-product__price price column ">
+              $ {item.product.price}
+            </div>
+
+            <div className="cart-product__quantity quantity column">
               <Counter item={item} />
             </div>
-            <p className="cart-product__unit-price">
+            <div className="cart-product__unit-price unit-price column">
               $ {item.quantity * item.product.price}
-            </p>
-            <hr />
+            </div>
           </div>
         ))}
       </div>
@@ -94,6 +96,7 @@ export const Cart: React.FC = () => {
           />
         </div>
       </div>
+      <Modal isOpen={isOpen} onClose={toggleDialog} />
     </div>
   );
 };

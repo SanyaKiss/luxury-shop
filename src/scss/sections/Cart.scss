@@ -1,63 +1,91 @@
 @import "../variables.scss";
 
 .cart {
+  .column {
+    flex: 1 1 25%;
+    text-align: center;
+  }
+  .content {
+    flex: 1 1 40%;
+  }
   &-thead {
-    margin: 25px 22px;
-    font-size: 20px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    padding: 25px 80px;
+    font-size: 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     &__product {
-      margin-right: 250px;
-      @media (max-width: $sm) {
-        margin-right: 0;
-      }
+      text-align: start;
     }
   }
+  &-products {
+    margin: 40px 80px ;
+  }
+
   &-product {
-    margin: 30px 20px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    @media (max-width: $sm) {
-      flex-wrap: wrap;
-      position: relative;
-      &__title{
-        align-self: flex-start;
-      }
-      &__price{
-        position: absolute;
-        left: 34%;
-        top: 80%;
-      }
-      &__remove-btn {
-        position: absolute;
-        left: 85%;
-        bottom: 90%;
-      }
-      &__unit-price {
-        display: none;
-      }
-      &__counter{
-        align-self: flex-end;
-      }
+    padding: 15px;
+    position: relative;
+    &__content {
+      display: flex;
+      align-items: center;
     }
     &__img {
-      width: 100px;
+      flex: 0 0 110px;
+      img {
+        max-width: 100%;
+      }
+    }
+    &__body {
+      flex: 1 1 auto;
+      padding: 0 0 0 45px;
+    }
+    &__title {
+      display: inline-block;
+      margin: 0 0 10px 0;
+    }
+    &__remove-btn {
+      position: absolute;
+      left: -2%;
+      bottom: 45%;
     }
   }
+
+  @media (max-width: $sm) {
+    flex-wrap: wrap;
+    &__remove-btn {
+      left: 85%;
+      bottom: 90%;
+    }
+    &__title {
+      align-self: flex-start;
+    }
+    &__price {
+      position: absolute;
+      left: 34%;
+      top: 80%;
+    }
+    &__total-price {
+      display: none;
+    }
+    &__quantity {
+      align-self: flex-end;
+    }
+  }
+
   &-check {
     display: flex;
     justify-content: space-between;
-    margin: 70px 40px;
+    margin: 60px 100px;
     @media (max-width: $sm) {
       flex-direction: column;
       margin: 30px 30px;
-      gap:30px
+      gap: 30px;
     }
   }
   .total {
-    min-width: 310px;
+    min-width: 370px;
     min-height: 310px;
     display: flex;
     flex-direction: column;
@@ -66,9 +94,6 @@
       display: flex;
       justify-content: space-between;
     }
-  }
-  hr {
-    opacity: 30%;
   }
 }
 
