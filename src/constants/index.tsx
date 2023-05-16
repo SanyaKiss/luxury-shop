@@ -66,7 +66,7 @@ const productsBackUp = [
   {
     id: '1',
     imgUrl:
-      'https://www.ikea-club.org/cache/zoo_images/9/99cb424c36ee96c5cf5eca39198dc967.jpg',
+      'https://images.dostavkin.su/uploads/images/large/205/083/20508328.jpg',
     title: 'Vogshen',
     price: 30,
     category: 'accessories',
@@ -112,6 +112,15 @@ const productsBackUp = [
     description:
       'This toilet brush is a real work of art in the world of household goods. Its elegant design is perfectly combined with any style of bathroom, and it is guaranteed to bring sophistication and chic to it.',
   },
+  // {
+  //   id: '5',
+  //   imgUrl:
+  //     'https://images.dostavkin.su/uploads/images/large/203/842/20384243.jpg',
+  //   title: 'Brimnes',
+  //   price: 45,
+  //   description:
+  //     'Removable shelves allow you to adjust the interior space according to storage needs.',
+  // },
   {
     id: '6',
     imgUrl:
