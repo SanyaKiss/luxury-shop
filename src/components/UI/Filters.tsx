@@ -71,7 +71,7 @@ export const Filters: React.FC = () => {
                 className={`popup__arrow${
                   isCategoryPopupActive ? "" : "--flipped"
                 }`}
-                src="/filters/arrow.svg"
+                src="public/images/filters/arrow.svg"
                 alt=""
               />
               <ul

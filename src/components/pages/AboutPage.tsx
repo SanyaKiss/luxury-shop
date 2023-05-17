@@ -19,7 +19,7 @@ export const AboutPage: React.FC = () => {
         live, breathe and design so our Chelsea boutique become the hotbed
         for the London interior design community."
         order="default"
-        imgUrl="/about/01.jpg"
+        imgUrl="images/about/01.jpg"
         element="button"
       />
       <About
@@ -28,7 +28,7 @@ export const AboutPage: React.FC = () => {
         text="Sustainable interiors is not another home design trend, but a 
         different mindset - pivoting the lifestyle altogether."
         order="reversed"
-        imgUrl="/about/02.jpg"
+        imgUrl="images/about/02.jpg"
         element="button"
       />
       <Features />

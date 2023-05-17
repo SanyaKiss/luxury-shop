@@ -27,7 +27,7 @@ export const Header: React.FC<HeaderProps> = ({ cropped }) => {
           </Link>
           <Link to="/cart">
             <img
-              src="/header/cart.svg"
+              src="images/header/cart.svg"
               alt="Cart"
               className="header__cart"
             />
