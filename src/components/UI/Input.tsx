@@ -9,8 +9,6 @@ type InputProps = {
   colorButton: string;
   backgroundButton: string;
   className: string;
-  value?: string;
-  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 };
 
 const Input: React.FC<InputProps> = (props) => {
@@ -22,8 +20,6 @@ const Input: React.FC<InputProps> = (props) => {
     colorButton,
     backgroundButton,
     className,
-    value,
-    onChange,
   } = props;
 
   const styles = {
@@ -41,8 +37,6 @@ const Input: React.FC<InputProps> = (props) => {
         type="text"
         style={styles}
         placeholder={text}
-        value={value}
-        onChange={(e) => onChange!(e)}
       />
       <Button
         text={textButton}

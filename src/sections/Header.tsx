@@ -2,22 +2,15 @@ import React, { ChangeEvent, useState } from "react";
 import "../scss/sections/Header.scss";
 import { categories } from "../constants";
 import { Link } from "react-router-dom";
-import Input from "../components/UI/Input";
 import { useAppDispatch } from "../store/store";
 import { setSearchValue } from "../store/filters/slice";
+import SearchInput from "../components/UI/SearchInput";
 
 type HeaderProps = {
   cropped?: boolean;
 };
 
 const Header: React.FC<HeaderProps> = ({ cropped }) => {
-  const dispatch = useAppDispatch();
-  const [value, setValue] = useState<string>("");
-
-  const onChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value);
-    dispatch(setSearchValue(e.target.value));
-  };
 
   return (
     <header className="header">
@@ -25,17 +18,7 @@ const Header: React.FC<HeaderProps> = ({ cropped }) => {
         <Link to="/" className="header__title">
           Luxury
         </Link>
-        <Input
-          text="Search product"
-          color="#000000"
-          background="#F9F9F9"
-          textButton="Find"
-          colorButton="#FFFFFF"
-          backgroundButton="#2a254b"
-          className="header__input"
-          value={value}
-          onChange={onChange}
-        />
+        <SearchInput/>
         <nav className="header__navbar">
           <Link to="/products" className="header__products">
             Products
