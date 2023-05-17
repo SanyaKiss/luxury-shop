@@ -4,7 +4,7 @@ export enum Status {
   ERROR = 'error',
 }
 
-export type Product = {
+export type ProductType = {
   id: string;
   imgUrl: string;
   title: string;
@@ -13,6 +13,6 @@ export type Product = {
 };
 
 export type ProductsSliceState = {
-  items: Product[];
+  items: ProductType[];
   status: Status;
 };

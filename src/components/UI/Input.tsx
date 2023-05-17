@@ -1,5 +1,5 @@
-import React, { ChangeEvent } from "react";
-import Button from "./Button";
+import React from "react";
+import { Button } from "./Button";
 
 type InputProps = {
   text: string;
@@ -11,7 +11,7 @@ type InputProps = {
   className: string;
 };
 
-const Input: React.FC<InputProps> = (props) => {
+export const Input: React.FC<InputProps> = (props) => {
   const {
     text,
     color,
@@ -33,11 +33,7 @@ const Input: React.FC<InputProps> = (props) => {
 
   return (
     <div className={className}>
-      <input
-        type="text"
-        style={styles}
-        placeholder={text}
-      />
+      <input type="text" style={styles} placeholder={text} />
       <Button
         text={textButton}
         color={colorButton}
@@ -47,5 +43,3 @@ const Input: React.FC<InputProps> = (props) => {
     </div>
   );
 };
-
-export default Input;

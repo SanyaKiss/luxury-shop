@@ -1,27 +1,27 @@
-export type Feature = {
+export type FeatureType = {
   imgUrl: string;
   title: string;
   text: string;
 };
 
-export const features: Feature[] = [
+export const features: FeatureType[] = [
   {
-    imgUrl: '/images/features/delivery.svg',
+    imgUrl: 'public/images/features/delivery.svg',
     title: 'Next day as standard',
     text: 'Order before 3pm and get your order the next day as standard',
   },
   {
-    imgUrl: '/images/features/checkmark.svg',
+    imgUrl: 'public/images/features/checkmark.svg',
     title: 'Made by true artisans',
     text: 'Handmade crafted goods made with real passion and craftmanship',
   },
   {
-    imgUrl: '/images/features/purchase.svg',
+    imgUrl: 'public/images/features/purchase.svg',
     title: 'Unbeatable prices',
     text: 'For our materials and quality you won’t find better prices anywhere',
   },
   {
-    imgUrl: '/images/features/sprout.svg',
+    imgUrl: 'public/images/features/sprout.svg',
     title: 'Recycled packaging',
     text: 'We use 100% recycled to ensure our footprint is more manageable',
   },
@@ -38,12 +38,12 @@ export const categories: string[] = [
 ];
 
 export const footerIcons: string[] = [
-  '/images/footer/linkedin.svg',
-  '/images/footer/facebook.svg',
-  '/images/footer/instagram.svg',
-  '/images/footer/skype.svg',
-  '/images/footer/twitter.svg',
-  '/images/footer/pinterest.svg',
+  'images/footer/linkedin.svg',
+  'images/footer/facebook.svg',
+  'images/footer/instagram.svg',
+  'images/footer/skype.svg',
+  'images/footer/twitter.svg',
+  'images/footer/pinterest.svg',
 ];
 
 export const menu: string[] = [

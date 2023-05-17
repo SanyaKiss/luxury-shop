@@ -8,12 +8,12 @@ type ButtonProps = {
   onClick?: () => void;
 };
 
-const Button: React.FC<ButtonProps> = ({
+export const Button: React.FC<ButtonProps> = ({
   text,
   color,
   background,
   className,
-  onClick
+  onClick,
 }) => {
   const styles = {
     fontFamily: "Satoshi",
@@ -27,10 +27,13 @@ const Button: React.FC<ButtonProps> = ({
   };
 
   return (
-    <button type="button" onClick={onClick} style={styles} className={className}>
+    <button
+      type="button"
+      onClick={onClick}
+      style={styles}
+      className={className}
+    >
       {text}
     </button>
   );
 };
-
-export default Button;

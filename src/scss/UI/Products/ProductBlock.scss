@@ -1,0 +1,81 @@
+@import "../../variables.scss";
+
+.product-block {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 50px 80px;
+
+  @media (max-width: $md) {
+    margin: 50px 30px 20px;
+  }
+
+  @media (max-width: 600px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  &__content {
+    padding: 80px;
+
+    @media (max-width: $xl) {
+      padding: 40px;
+    }
+
+    @media (max-width: $lg) {
+      padding: 20px;
+    }
+
+    @media (max-width: $sm) {
+      padding: 20px 0;
+    }
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  &__title {
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 44px;
+  }
+
+  &__price {
+    margin-top: 20px;
+    font-family: $satoshi;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 32px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  &__description {
+    margin: 20px 0;
+    font-family: $satoshi;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+  }
+  &__btn-container {
+    display: flex;
+    gap: 50px;
+  }
+  &__btn {
+    margin-top: auto;
+    justify-self: end;
+    align-self: start;
+
+    @media (max-width: $sm) {
+      align-self: stretch;
+    }
+  }
+}

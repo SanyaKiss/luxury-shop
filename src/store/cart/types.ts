@@ -1,4 +1,4 @@
-import { Product } from "../products/types";
+import { ProductType } from "../products/types";
 
 export type CartSliceState = {
   cart: CartItem[];
@@ -6,6 +6,6 @@ export type CartSliceState = {
 };
 
 export type CartItem = {
-  product: Product;
+  product: ProductType;
   quantity: number;
 };

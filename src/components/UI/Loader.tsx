@@ -1,7 +1,7 @@
-import React from 'react';
-import '../../scss/components/UI/Loader.scss';
+import React from "react";
+import "../../scss/UI/Loader.scss";
 
-const Loader: React.FC = () => {
+export const Loader: React.FC = () => {
   return (
     <div className="loader">
       <div className="lds-ring">
@@ -13,5 +13,3 @@ const Loader: React.FC = () => {
     </div>
   );
 };
-
-export default Loader;

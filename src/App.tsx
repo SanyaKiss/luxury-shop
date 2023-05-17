@@ -1,16 +1,14 @@
-import "./scss/app.scss";
-
 import React from "react";
+import "./scss/app.scss";
 import { Routes, Route, useLocation } from "react-router";
-import Default from "./layouts/Default";
-import HomePage from "./pages/HomePage";
-import AboutPage from "./pages/AboutPage";
-import NotFoundPage from "./pages/NotFoundPage";
-import ProductPage from "./pages/ProductPage";
-import ProductsPage from "./pages/ProductsPage";
-import CartPage from "./pages/CartPage";
+import { AboutPage } from "./components/pages/AboutPage";
+import { Default } from "./components/pages/Default";
+import { HomePage } from "./components/pages/HomePage";
+import { ProductsPage } from "./components/pages/ProductsPage";
+import { CartPage } from "./components/pages/CartPage";
+import { NotFoundPage } from "./components/pages/NotFoundPage";
 
-const App: React.FC = () => {
+export const App: React.FC = () => {
   const { pathname } = useLocation();
 
   React.useEffect(() => {
@@ -20,10 +18,10 @@ const App: React.FC = () => {
   return (
     <Routes>
       <Route path="/" element={<Default />}>
-        <Route path="" element={<HomePage />} />
+        <Route index element={<HomePage />} />
         <Route path="products" element={<ProductsPage />} />
         <Route path="products/:category" element={<ProductsPage />} />
-        <Route path="product/:id" element={<ProductPage />} />
+        <Route path="product/:id" element={<ProductsPage />} />
         <Route path="about" element={<AboutPage />} />
         <Route path="cart" element={<CartPage />} />
         <Route path="*" element={<NotFoundPage />} />
@@ -31,5 +29,3 @@ const App: React.FC = () => {
     </Routes>
   );
 };
-
-export default App;

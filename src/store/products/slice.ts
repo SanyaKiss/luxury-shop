@@ -1,7 +1,7 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import axios from 'axios';
-import { shuffle } from '../../utils/shuffle';
-import { Product, ProductsSliceState, Status } from './types';
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import axios from "axios";
+import { shuffle } from "../../utils/shuffle";
+import { ProductType, ProductsSliceState, Status } from "./types";
 
 type FetchParams = {
   args: string;
@@ -9,9 +9,9 @@ type FetchParams = {
 };
 
 export const fetchProducts = createAsyncThunk(
-  'products/fetchProducts',
+  "products/fetchProducts",
   async (params: FetchParams) => {
-    const { data } = await axios.get<Product[]>(
+    const { data } = await axios.get<ProductType[]>(
       `https://637374ac348e9472990cef38.mockapi.io/products${params.args}`
     );
 
@@ -26,10 +26,10 @@ const initialState: ProductsSliceState = {
 };
 
 const productsSlice = createSlice({
-  name: 'products',
+  name: "products",
   initialState,
   reducers: {
-    setItems(state, action: PayloadAction<Product[]>) {
+    setItems(state, action: PayloadAction<ProductType[]>) {
       state.items = action.payload;
     },
   },
@@ -40,7 +40,7 @@ const productsSlice = createSlice({
     });
     builder.addCase(
       fetchProducts.fulfilled,
-      (state, action: PayloadAction<Product[]>) => {
+      (state, action: PayloadAction<ProductType[]>) => {
         state.items = action.payload;
         state.status = Status.SUCCESS;
       }
