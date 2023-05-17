@@ -19,7 +19,7 @@ const SearchInput: React.FC = () => {
         className="search-input"
         type="text"
         value={value}
-        onChange={onChange}
+        onChange={(e) => onChange(e)}
       />
       <img
         src="../../../public/images/header/search.png"

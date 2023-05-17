@@ -1,10 +1,10 @@
-@import '../variables.scss';
+@import "../variables.scss";
 
 .filters {
-  margin: 25px 100px;
+  margin: 25px 25px;
 
   @media (max-width: $md) {
-    margin: 20px 30px;
+    margin: 20px 5px;
   }
 
   &__container {
@@ -13,9 +13,13 @@
     align-items: center;
     gap: 20px;
 
-    @media (max-width: $sm) {
-      justify-content: space-between;
+    @media (max-width: $md) {
+      flex-wrap: wrap;
     }
+  }
+
+  &__popups {
+    display: flex;
   }
 
   &__category,

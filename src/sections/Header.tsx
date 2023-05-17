@@ -1,16 +1,17 @@
-import React, { ChangeEvent, useState } from "react";
+import React from "react";
 import "../scss/sections/Header.scss";
 import { categories } from "../constants";
 import { Link } from "react-router-dom";
-import { useAppDispatch } from "../store/store";
-import { setSearchValue } from "../store/filters/slice";
 import SearchInput from "../components/UI/SearchInput";
+import { useAppDispatch } from "../store/store";
+import { changeCategory } from "../store/filters/slice";
 
 type HeaderProps = {
   cropped?: boolean;
 };
 
 const Header: React.FC<HeaderProps> = ({ cropped }) => {
+  const dispatch = useAppDispatch();
 
   return (
     <header className="header">
@@ -18,7 +19,6 @@ const Header: React.FC<HeaderProps> = ({ cropped }) => {
         <Link to="/" className="header__title">
           Luxury
         </Link>
-        <SearchInput/>
         <nav className="header__navbar">
           <Link to="/products" className="header__products">
             Products
@@ -46,7 +46,12 @@ const Header: React.FC<HeaderProps> = ({ cropped }) => {
             {categories.map((item, index) => {
               if (item !== "All")
                 return (
-                  <Link to="/products" key={index} className="header__link">
+                  <Link
+                    to="/products"
+                    key={index}
+                    onClick={() => dispatch(changeCategory(item))}
+                    className="header__link"
+                  >
                     {item}
                   </Link>
                 );
