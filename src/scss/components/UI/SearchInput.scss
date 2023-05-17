@@ -5,7 +5,7 @@
     align-items: center;
   }
 
-  &-input[type="text"] {
+  &-input {
     position: relative;
     padding: 15px 40px 15px 20px;
     width: 300px;
@@ -16,10 +16,6 @@
     background: linear-gradient(to right, #ffffff 0%, #464747 #f9f9f9 100%);
     transition: width 0.4s ease;
     outline: none;
-
-    &:focus {
-      width: 300px;
-    }
   }
 
   &-icon {

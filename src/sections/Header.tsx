@@ -33,11 +33,6 @@ const Header: React.FC<HeaderProps> = ({ cropped }) => {
               className="header__cart"
             />
           </Link>
-          <img
-            src="images/header/menu.svg"
-            alt="header__menu"
-            className="header__menu"
-          />
         </nav>
       </div>
       {!cropped && (

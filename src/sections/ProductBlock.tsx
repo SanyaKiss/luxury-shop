@@ -1,20 +1,23 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "../scss/sections/ProductBlock.scss";
+
 import { useNavigate, useParams } from "react-router";
 import { Product } from "../store/products/types";
-import Button from "../components/UI/Button";
-import Loader from "../components/UI/Loader";
 import { useAppDispatch } from "../store/store";
 import { addProduct } from "../store/cart/slice";
+
+import Button from "../components/UI/Button";
+import Loader from "../components/UI/Loader";
 import Counter from "../components/UI/Counter";
 
 const ProductBlock: React.FC = () => {
-  const dispatch = useAppDispatch();
-  // const [count, setCount] = useState<number>(2);
-  const [product, setProduct] = React.useState<Product>();
   const { id } = useParams();
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+
+  const [count, setCount] = useState<number>(1);
+  const [product, setProduct] = React.useState<Product>();
 
   React.useEffect(() => {
     async function fetchProduct() {
@@ -36,7 +39,21 @@ const ProductBlock: React.FC = () => {
   if (!product) return <Loader />;
 
   const addToCart = () => {
-    dispatch(addProduct({ product, quantity: 1 }));
+    dispatch(addProduct({
+      product,
+      quantity: count,
+    }));
+    setCount(1);
+  };
+
+  const increase = () => {
+    setCount(count + 1);
+  };
+
+  const decrease = () => {
+    if (count > 1) {
+      setCount(count - 1);
+    }
   };
 
   return (
@@ -59,7 +76,11 @@ const ProductBlock: React.FC = () => {
                   className="product-block__btn"
                   onClick={addToCart}
                 />
-                <Counter item={{ product, quantity: 1 }} />
+                <Counter
+                  count={count}
+                  increase={() => increase()}
+                  decrease={() => decrease()}
+                />
               </div>
             </div>
           </div>

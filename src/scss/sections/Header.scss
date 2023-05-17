@@ -3,6 +3,7 @@
 .header {
   margin: 0 20px;
   position: relative ;
+  
   &__top {
     height: 70px;
     display: flex;
@@ -19,10 +20,6 @@
     width: 24px;
     height: 24px;
     cursor: pointer;
-
-    @media (max-width: $sm) {
-      display: none;
-    }
   }
 
   &__title {
@@ -64,16 +61,6 @@
 
     @media (max-width: $sm) {
       margin-right: 6px;
-    }
-  }
-
-  &__menu {
-    display: none;
-    width: 24px;
-    height: 24px;
-
-    @media (max-width: $sm) {
-      display: block;
     }
   }
 

@@ -10,7 +10,7 @@ type ModalType = {
   onClose: () => void;
 };
 
-export const Modal: React.FC<ModalType> = ({ isOpen, onClose }) => {
+const Modal: React.FC<ModalType> = ({ isOpen, onClose }) => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const [success, setSuccess] = useState<boolean>(false);
@@ -66,3 +66,5 @@ export const Modal: React.FC<ModalType> = ({ isOpen, onClose }) => {
     </div>
   );
 };
+
+export default Modal

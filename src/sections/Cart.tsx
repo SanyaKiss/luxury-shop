@@ -1,25 +1,20 @@
 import React, { useState } from "react";
 import "../scss/sections/Cart.scss";
-import Input from "../components/UI/Input";
-import Button from "../components/UI/Button";
-import Counter from "../components/UI/Counter";
+
 import { useSelector } from "react-redux";
 import { selectCart } from "../store/cart/selectors";
 import { CartItem } from "../store/cart/types";
-import { useAppDispatch } from "../store/store";
-import { removeProduct } from "../store/cart/slice";
-import { Modal } from "../components/UI/Modal";
+
+import Input from "../components/UI/Input";
+import Button from "../components/UI/Button";
+import Modal from "../components/UI/Modal";
+import CartProduct from "../components/CartProduct";
 
 export const Cart: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const toggleDialog = () => setIsOpen(!isOpen);
-
-  const dispatch = useAppDispatch();
   const { cart, totalPrice } = useSelector(selectCart);
+  const [isOpen, setIsOpen] = useState(false);
 
-  const handleRemove = (item: CartItem) => {
-    dispatch(removeProduct(item));
-  };
+  const toggleDialog = () => setIsOpen(!isOpen);
 
   return (
     <div className="cart">
@@ -27,34 +22,13 @@ export const Cart: React.FC = () => {
         <p className="cart-heading__product content ">PRODUCT</p>
         <p className="cart-heading__price price column">PRICE</p>
         <p className="cart-heading__quantity quantity  column">QTY</p>
-        <p className="cart-heading__unit-price unit-price  column">UNIT PRICE</p>
+        <p className="cart-heading__unit-price unit-price  column">
+          UNIT PRICE
+        </p>
       </div>
       <div className="cart-products">
         {cart.map((item: CartItem) => (
-          <div className="cart-product" key={item.product.id}>
-            <img
-              src="../../public/images/cart/del.png"
-              alt="remove product"
-              onClick={() => handleRemove(item)}
-              className="cart-product__remove-btn"
-            />
-            <div className="cart-product__content content ">
-              <div className="cart-product__img">
-                <img src={item.product.imgUrl} alt="" />
-              </div>
-                <div className="cart-product__title ">{item.product.title}</div>
-            </div>
-            <div className="cart-product__price price column ">
-              $ {item.product.price}
-            </div>
-
-            <div className="cart-product__quantity quantity column">
-              <Counter item={item} />
-            </div>
-            <div className="cart-product__unit-price unit-price column">
-              $ {item.quantity * item.product.price}
-            </div>
-          </div>
+          <CartProduct item={item} />
         ))}
       </div>
       <div className="cart-check">
