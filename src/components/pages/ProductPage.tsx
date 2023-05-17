@@ -7,7 +7,7 @@ import { SignUp } from "../layout/SignUp";
 
 export const ProductPage: React.FC = () => {
   const { id } = useParams();
-
+  console.log("product page");
   return (
     <>
       <ProductBlock />

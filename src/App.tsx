@@ -7,6 +7,7 @@ import { HomePage } from "./components/pages/HomePage";
 import { ProductsPage } from "./components/pages/ProductsPage";
 import { CartPage } from "./components/pages/CartPage";
 import { NotFoundPage } from "./components/pages/NotFoundPage";
+import { ProductPage } from "./components/pages/ProductPage";
 
 export const App: React.FC = () => {
   const { pathname } = useLocation();
@@ -21,7 +22,7 @@ export const App: React.FC = () => {
         <Route index element={<HomePage />} />
         <Route path="products" element={<ProductsPage />} />
         <Route path="products/:category" element={<ProductsPage />} />
-        <Route path="product/:id" element={<ProductsPage />} />
+        <Route path="product/:id" element={<ProductPage />} />
         <Route path="about" element={<AboutPage />} />
         <Route path="cart" element={<CartPage />} />
         <Route path="*" element={<NotFoundPage />} />
