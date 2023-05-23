@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "./Button";
+import { SignModal } from "./SignModal";
 
 type InputProps = {
   text: string;
@@ -22,6 +23,10 @@ export const Input: React.FC<InputProps> = (props) => {
     className,
   } = props;
 
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleDialog = () => setIsOpen(!isOpen);
+
   const styles = {
     border: "none",
     padding: "18px 32px",
@@ -39,7 +44,9 @@ export const Input: React.FC<InputProps> = (props) => {
         color={colorButton}
         background={backgroundButton}
         className="input__button"
+        onClick={toggleDialog}
       />
+      <SignModal isOpen={isOpen} onClose={toggleDialog} />
     </div>
   );
 };

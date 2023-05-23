@@ -1,0 +1,68 @@
+.sign-dialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    width: 400px;
+    min-height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    gap: 25px;
+  }
+
+  &__tabs{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+  }
+  &__tab {
+    position: relative;
+    padding: 8px 16px;
+    font-size: 16px;
+    cursor: pointer;
+
+    &::after{
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: #2a254b;
+      transform: scaleX(0);
+      transition: transform 0.2s ease-in-out;    }
+  }
+
+  .active{
+    &::after{
+      transform: scaleX(1);
+    }
+  }
+
+  &__input {
+    border: none;
+    padding: 15px 30px;
+    background: rgb(249, 249, 249);
+    margin-bottom: 15px;
+    width: 90%;
+  }
+
+  &__button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+}

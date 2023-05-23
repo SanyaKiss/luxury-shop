@@ -6,6 +6,7 @@ type ButtonProps = {
   background: string;
   className: string;
   onClick?: () => void;
+  type?: "button" | "submit"
 };
 
 export const Button: React.FC<ButtonProps> = ({
@@ -14,6 +15,7 @@ export const Button: React.FC<ButtonProps> = ({
   background,
   className,
   onClick,
+  type
 }) => {
   const styles = {
     fontFamily: "Satoshi",
@@ -28,7 +30,7 @@ export const Button: React.FC<ButtonProps> = ({
 
   return (
     <button
-      type="button"
+      type= {type ? type : 'button'}
       onClick={onClick}
       style={styles}
       className={className}

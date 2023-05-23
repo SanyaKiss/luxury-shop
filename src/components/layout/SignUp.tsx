@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "../../scss/layout/SignUp.scss";
 import { Input } from "../UI/Input";
 
