@@ -123,11 +123,17 @@ export const SignModal: React.FC<ModalType> = ({
                   type="submit"
                 />
                 <button
-                  type="button"
-                  className="sign-dialog__button_google"
                   onClick={signInWithGoogle}
+                  className="sign-dialog__button_google"
                 >
-                  Sign in with Google
+                  <img
+                    className="sign-dialog__button_google-icon"
+                    src="../../../images/products/google.png"
+                    alt=""
+                  />
+                  <div className="sign-dialog__button-text">
+                    Sign in with Google
+                  </div>
                 </button>
               </div>
             </form>
