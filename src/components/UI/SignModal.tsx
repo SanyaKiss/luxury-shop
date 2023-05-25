@@ -6,14 +6,23 @@ import { Button } from "./Button";
 type ModalType = {
   isOpen: boolean;
   onClose: () => void;
+  emailValue: string;
 };
 
-export const SignModal: React.FC<ModalType> = ({ isOpen, onClose }) => {
+export const SignModal: React.FC<ModalType> = ({
+  isOpen,
+  onClose,
+  emailValue,
+}) => {
   const { register, login, signInWithGoogle } = useAuth();
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [userName, setUserName] = useState<string>("");
   const [activeTab, setActiveTab] = useState<"sign up" | "login">("sign up");
+
+  useEffect(() => {
+    setEmail(emailValue);
+  }, [emailValue]);
 
   const changeUserName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUserName(e.target.value);
@@ -57,7 +66,6 @@ export const SignModal: React.FC<ModalType> = ({ isOpen, onClose }) => {
     };
   }, [isOpen, onClose]);
 
-
   return (
     <div>
       {isOpen && (
@@ -84,22 +92,25 @@ export const SignModal: React.FC<ModalType> = ({ isOpen, onClose }) => {
             <form onSubmit={(e) => onSubmit(e)} className="sign-dialog__form">
               {activeTab === "sign up" && (
                 <input
+                  value={userName}
                   className="sign-dialog__input"
                   type="text"
-                  placeholder="username"
+                  placeholder="Username"
                   onChange={(e) => changeUserName(e)}
                 />
               )}
               <input
+                value={email}
                 className="sign-dialog__input"
                 type="email"
-                placeholder="your email"
+                placeholder="Your email"
                 onChange={(e) => changeEmail(e)}
               />
               <input
+                value={password}
                 className="sign-dialog__input"
                 type="password"
-                placeholder="password"
+                placeholder="Password"
                 onChange={(e) => changePass(e)}
               />
               <div className="sign-dialog__buttons">
@@ -110,7 +121,11 @@ export const SignModal: React.FC<ModalType> = ({ isOpen, onClose }) => {
                   className="sign-dialog__button"
                   type="submit"
                 />
-                <button type="button" className="sign-dialog__button_google" onClick={signInWithGoogle}>
+                <button
+                  type="button"
+                  className="sign-dialog__button_google"
+                  onClick={signInWithGoogle}
+                >
                   Sign in with Google
                 </button>
               </div>

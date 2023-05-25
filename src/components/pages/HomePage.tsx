@@ -4,8 +4,11 @@ import { About } from "../layout/About";
 import { Features } from "../layout/Features";
 import { Hero } from "../layout/Hero";
 import { SignUp } from "../layout/SignUp";
+import { useAuth } from "../../context/AuthProvider";
 
 export const HomePage: React.FC = () => {
+  const { user } = useAuth();
+
   return (
     <>
       <Hero />
@@ -16,7 +19,7 @@ export const HomePage: React.FC = () => {
         shuffled={true}
         hasButton={true}
       />
-      <SignUp />
+      {!user && <SignUp />}
       <About
         title="From a studio in London to a global brand with over 400 outlets"
         text="When we started Luxury, the idea was simple. Make high quality

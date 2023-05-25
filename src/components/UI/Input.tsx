@@ -23,6 +23,7 @@ export const Input: React.FC<InputProps> = (props) => {
     className,
   } = props;
 
+  const [value, setValue] = useState<string>("");
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleDialog = () => setIsOpen(!isOpen);
@@ -38,7 +39,13 @@ export const Input: React.FC<InputProps> = (props) => {
 
   return (
     <div className={className}>
-      <input type="text" style={styles} placeholder={text} />
+      <input
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        type="text"
+        style={styles}
+        placeholder={text}
+      />
       <Button
         text={textButton}
         color={colorButton}
@@ -46,7 +53,7 @@ export const Input: React.FC<InputProps> = (props) => {
         className="input__button"
         onClick={toggleDialog}
       />
-      <SignModal isOpen={isOpen} onClose={toggleDialog} />
+      <SignModal isOpen={isOpen} onClose={toggleDialog} emailValue={value} />
     </div>
   );
 };

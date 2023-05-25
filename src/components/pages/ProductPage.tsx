@@ -4,10 +4,11 @@ import { ProductBlock } from "../UI/Products/ProductBlock";
 import { Products } from "../UI/Products/Products";
 import { Features } from "../layout/Features";
 import { SignUp } from "../layout/SignUp";
+import { useAuth } from "../../context/AuthProvider";
 
 export const ProductPage: React.FC = () => {
   const { id } = useParams();
-  console.log("product page");
+  const { user } = useAuth();
   return (
     <>
       <ProductBlock />
@@ -18,7 +19,7 @@ export const ProductPage: React.FC = () => {
         currendProductId={id}
       />
       <Features />
-      <SignUp />
+      {!user && <SignUp />}
     </>
   );
 };

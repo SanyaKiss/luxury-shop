@@ -4,8 +4,10 @@ import "../../scss/layout/Footer.scss";
 import { Input } from "../UI/Input";
 import { categories, menu, info, footerIcons } from "../../constants";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../context/AuthProvider";
 
 export const Footer: React.FC = () => {
+  const { user } = useAuth();
   return (
     <footer className="footer">
       <div className="footer__top">
@@ -38,18 +40,20 @@ export const Footer: React.FC = () => {
             ))}
           </ul>
         </div>
-        <div className="footer__form">
-          <p className="form__title">Join our mailing list</p>
-          <Input
-            text="your@email.com"
-            color="#FFFFFF"
-            background="rgba(255, 255, 255, 0.15)"
-            textButton="Sign up"
-            colorButton="#2a254b"
-            backgroundButton="#FFFFFF"
-            className="form__input"
-          />
-        </div>
+        {!user && (
+          <div className="footer__form">
+            <p className="form__title">Join our mailing list</p>
+            <Input
+              text="your@email.com"
+              color="#FFFFFF"
+              background="rgba(255, 255, 255, 0.15)"
+              textButton="Sign up"
+              colorButton="#2a254b"
+              backgroundButton="#FFFFFF"
+              className="form__input"
+            />
+          </div>
+        )}{" "}
       </div>
       <div className="footer__bottom">
         <span className="footer__copyright">Copyright 2022 Luxury LTD</span>

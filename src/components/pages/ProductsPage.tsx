@@ -9,11 +9,15 @@ export const ProductsPage: React.FC = () => {
       <Filters />
       <Products />
       <About
-        title="Join the club and get the benefits"
-        text="Sign up for our newsletter and receive exclusive offers on new ranges, sales, pop up stores and more"
-        order="reversed"
-        imgUrl="images/about/02.jpg"
-        element="input"
+        title="From a studio in London to a global brand with over 400 outlets"
+        text="When we started Luxury, the idea was simple. Make high quality
+        furniture affordable and available for the mass market."
+        extraText="Handmade, and lovingly crafted furniture and homeware is what we
+        live, breathe and design so our Chelsea boutique become the hotbed
+        for the London interior design community."
+        order="default"
+        imgUrl="images/about/01.jpg"
+        element="button"
       />
     </>
   );

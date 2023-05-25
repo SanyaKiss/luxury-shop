@@ -2,6 +2,7 @@ import React from "react";
 import "../../scss/layout/About.scss";
 import { Button } from "../UI/Button";
 import { Input } from "../UI/Input";
+import { useAuth } from "../../context/AuthProvider";
 
 type AboutProps = {
   title: string;
@@ -20,6 +21,8 @@ export const About: React.FC<AboutProps> = ({
   imgUrl,
   element,
 }) => {
+  const { user } = useAuth();
+
   return (
     <div className="about">
       <div
@@ -36,7 +39,7 @@ export const About: React.FC<AboutProps> = ({
           <h3 className="about__title">{title}</h3>
           <p className="about__text">{text}</p>
           <p className="about__text--second">{extraText}</p>
-          {element === "button" ? (
+          {element === "button" || !user ? (
             <Button
               text="Get in touch"
               color="#2a254b"
