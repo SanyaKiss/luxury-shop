@@ -82,7 +82,6 @@ export const AuthProvider: FC<{ children: JSX.Element }> = ({ children }) => {
     setLoading(true);
     try {
       await logout();
-      console.log("logout");
     } catch (e) {
       console.error(e);
     } finally {
@@ -103,7 +102,7 @@ export const AuthProvider: FC<{ children: JSX.Element }> = ({ children }) => {
     .catch((error: AuthError) => {
       const errorCode = error.code;
       const errorMessage = error.message;
-      console.error("Ошибка аутентификации", errorCode, errorMessage);
+      console.error("Помилка аутентифікаціі", errorCode, errorMessage);
     });
 
   useEffect(

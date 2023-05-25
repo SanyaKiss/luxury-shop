@@ -43,6 +43,7 @@ export const SignModal: React.FC<ModalType> = ({
     } else {
       await login(email, password);
     }
+    onClose();
   };
 
   const handleTabChange = (tab: "sign up" | "login") => {
