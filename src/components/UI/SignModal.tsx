@@ -9,7 +9,7 @@ type ModalType = {
 };
 
 export const SignModal: React.FC<ModalType> = ({ isOpen, onClose }) => {
-  const { register, login } = useAuth();
+  const { register, login, signInWithGoogle } = useAuth();
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [userName, setUserName] = useState<string>("");
@@ -56,6 +56,7 @@ export const SignModal: React.FC<ModalType> = ({ isOpen, onClose }) => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [isOpen, onClose]);
+
 
   return (
     <div>
@@ -109,6 +110,9 @@ export const SignModal: React.FC<ModalType> = ({ isOpen, onClose }) => {
                   className="sign-dialog__button"
                   type="submit"
                 />
+                <button type="button" className="sign-dialog__button_google" onClick={signInWithGoogle}>
+                  Sign in with Google
+                </button>
               </div>
             </form>
           </div>

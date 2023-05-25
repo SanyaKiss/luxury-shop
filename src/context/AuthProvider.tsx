@@ -1,4 +1,15 @@
-import { User, onAuthStateChanged, updateProfile } from "firebase/auth";
+import firebase from "firebase/app";
+import "firebase/auth";
+import {
+  UserCredential,
+  User,
+  onAuthStateChanged,
+  updateProfile,
+  GoogleAuthProvider,
+  signInWithPopup,
+  AuthError,
+  getAuth,
+} from "firebase/auth";
 import {
   FC,
   createContext,
@@ -21,6 +32,7 @@ interface IContext {
   ) => Promise<void>;
   login: (email: string, password: string) => Promise<void>;
   logout: () => Promise<void>;
+  signInWithGoogle: () => Promise<UserCredential>;
 }
 
 export const AuthContext = createContext<IContext>({} as IContext);
@@ -28,6 +40,7 @@ export const AuthContext = createContext<IContext>({} as IContext);
 export const AuthProvider: FC<{ children: JSX.Element }> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(false);
+  const auth = getAuth();
 
   const registerHandler = async (
     email: string,
@@ -49,7 +62,7 @@ export const AuthProvider: FC<{ children: JSX.Element }> = ({ children }) => {
       setLoading(false);
     }
   };
-  
+
   const loginHandler = async (email: string, password: string) => {
     setLoading(true);
     try {
@@ -77,6 +90,22 @@ export const AuthProvider: FC<{ children: JSX.Element }> = ({ children }) => {
     }
   };
 
+  const signInWithGoogle = (): Promise<UserCredential> => {
+    const provider = new GoogleAuthProvider();
+    return signInWithPopup(auth, provider);
+  };
+
+  signInWithGoogle()
+    .then((result: UserCredential) => {
+      const user = result.user;
+      console.log("Успішна аутентифікація", user);
+    })
+    .catch((error: AuthError) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.error("Ошибка аутентификации", errorCode, errorMessage);
+    });
+
   useEffect(
     () =>
       onAuthStateChanged(AUTH, (user) => {
@@ -93,6 +122,7 @@ export const AuthProvider: FC<{ children: JSX.Element }> = ({ children }) => {
       register: registerHandler,
       login: loginHandler,
       logout: logoutHandler,
+      signInWithGoogle,
     }),
     [user, loading]
   );
