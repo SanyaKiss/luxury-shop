@@ -6,7 +6,7 @@ import { Button } from "./Button";
 type ModalType = {
   isOpen: boolean;
   onClose: () => void;
-  emailValue: string;
+  emailValue?: string;
 };
 
 export const SignModal: React.FC<ModalType> = ({
@@ -21,7 +21,7 @@ export const SignModal: React.FC<ModalType> = ({
   const [activeTab, setActiveTab] = useState<"sign up" | "login">("sign up");
 
   useEffect(() => {
-    setEmail(emailValue);
+    setEmail(emailValue!);
   }, [emailValue]);
 
   const changeUserName = (e: React.ChangeEvent<HTMLInputElement>) => {

@@ -59,7 +59,7 @@ export const Footer: React.FC = () => {
         <span className="footer__copyright">Copyright 2022 Luxury LTD</span>
         <div className="footer__links">
           {footerIcons.map((icon, index) => (
-            <a key={index} href="https://www.youtube.com/watch?v=PaEkgV1JOB4">
+            <a target="_blank" key={index} href="https://www.youtube.com/watch?v=PaEkgV1JOB4">
               <img key={index} src={icon} alt="Link" className="footer__link" />
             </a>
           ))}
