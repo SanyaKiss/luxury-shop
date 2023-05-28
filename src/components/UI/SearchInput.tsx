@@ -21,10 +21,7 @@ export const SearchInput: React.FC = () => {
         value={value}
         onChange={(e) => onChange(e)}
       />
-      <img
-        src="public/images/header/search.png"
-        className="search-icon"
-      />
+      <img src="images/header/search.png" className="search-icon" />
     </div>
   );
 };
