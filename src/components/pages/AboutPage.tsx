@@ -34,7 +34,7 @@ export const AboutPage: React.FC = () => {
 				element='button'
 			/>
 			<Features />
-			{!user && <SignUp />}
+			{user == null && <SignUp />}
 		</>
 	);
 };

@@ -1,11 +1,11 @@
 import React from 'react';
 import '../../scss/UI/Counter.scss';
 
-type CounterProps = {
+interface CounterProps {
 	count: number;
 	increase: () => void;
 	decrease: () => void;
-};
+}
 
 export const Counter: React.FC<CounterProps> = ({ count, increase, decrease }) => {
 	return (

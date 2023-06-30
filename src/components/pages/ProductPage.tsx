@@ -14,7 +14,7 @@ export const ProductPage: React.FC = () => {
 			<ProductBlock />
 			<Products title='You might also like' limit={4} shuffled={true} currendProductId={id} />
 			<Features />
-			{!user && <SignUp />}
+			{user == null && <SignUp />}
 		</>
 	);
 };

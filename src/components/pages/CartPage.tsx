@@ -6,7 +6,7 @@ import { useCart } from '../../stores/cart/store';
 export const CartPage: React.FC = () => {
 	const cart = useCart((state) => state.cart);
 
-	if (cart.length == 0) {
+	if (cart.length === 0) {
 		return <EmptyCart />;
 	}
 

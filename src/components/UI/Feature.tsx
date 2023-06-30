@@ -1,6 +1,6 @@
 import React from 'react';
 import '../../scss/UI/Feature.scss';
-import { FeatureType } from '../../constants';
+import { type FeatureType } from '../../constants';
 
 export const Feature: React.FC<FeatureType> = ({ imgUrl, title, text }) => {
 	return (

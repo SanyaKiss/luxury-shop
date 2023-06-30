@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Button } from './Button';
 import { SignModal } from './SignModal';
 
-type InputProps = {
+interface InputProps {
 	text: string;
 	color: string;
 	background: string;
@@ -10,7 +10,7 @@ type InputProps = {
 	colorButton: string;
 	backgroundButton: string;
 	className: string;
-};
+}
 
 export const Input: React.FC<InputProps> = (props) => {
 	const { text, color, background, textButton, colorButton, backgroundButton, className } = props;
@@ -18,7 +18,9 @@ export const Input: React.FC<InputProps> = (props) => {
 	const [value, setValue] = useState<string>('');
 	const [isOpen, setIsOpen] = useState(false);
 
-	const toggleDialog = () => setIsOpen(!isOpen);
+	const toggleDialog = () => {
+		setIsOpen(!isOpen);
+	};
 
 	const styles = {
 		border: 'none',
@@ -33,7 +35,9 @@ export const Input: React.FC<InputProps> = (props) => {
 		<div className={className}>
 			<input
 				value={value}
-				onChange={(e) => setValue(e.target.value)}
+				onChange={(e) => {
+					setValue(e.target.value);
+				}}
 				type='text'
 				style={styles}
 				placeholder={text}

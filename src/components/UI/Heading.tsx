@@ -1,9 +1,9 @@
 import React from 'react';
 import '../../scss/UI/Heading.scss';
 
-type HeadingProps = {
+interface HeadingProps {
 	text: string;
-};
+}
 
 export const Heading: React.FC<HeadingProps> = ({ text }) => {
 	return (

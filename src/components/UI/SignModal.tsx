@@ -1,13 +1,13 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAuth } from '../../context/AuthProvider';
 import '../../scss/UI/SignModal.scss';
 import { Button } from './Button';
 
-type ModalType = {
+interface ModalType {
 	isOpen: boolean;
 	onClose: () => void;
 	emailValue?: string;
-};
+}
 
 export const SignModal: React.FC<ModalType> = ({ isOpen, onClose, emailValue }) => {
 	const { register, login, signInWithGoogle } = useAuth();
@@ -49,7 +49,7 @@ export const SignModal: React.FC<ModalType> = ({ isOpen, onClose, emailValue }) 
 	useEffect(() => {
 		const handleClickOutside = (event: MouseEvent) => {
 			const modal = document.querySelector('.sign-dialog__content');
-			if (modal && !modal.contains(event.target as Node)) {
+			if (modal != null && !modal.contains(event.target as Node)) {
 				onClose();
 			}
 		};
@@ -71,25 +71,36 @@ export const SignModal: React.FC<ModalType> = ({ isOpen, onClose, emailValue }) 
 						<div className='sign-dialog__tabs'>
 							<p
 								className={`sign-dialog__tab ${activeTab === 'sign up' ? 'active' : ''}`}
-								onClick={() => handleTabChange('sign up')}
+								onClick={() => {
+									handleTabChange('sign up');
+								}}
 							>
 								Sign Up
 							</p>
 							<p
 								className={`sign-dialog__tab ${activeTab === 'login' ? 'active' : ''}`}
-								onClick={() => handleTabChange('login')}
+								onClick={() => {
+									handleTabChange('login');
+								}}
 							>
 								Log In
 							</p>
 						</div>
-						<form onSubmit={(e) => onSubmit(e)} className='sign-dialog__form'>
+						<form
+							onSubmit={async (e) => {
+								await onSubmit(e);
+							}}
+							className='sign-dialog__form'
+						>
 							{activeTab === 'sign up' && (
 								<input
 									value={userName}
 									className='sign-dialog__input'
 									type='text'
 									placeholder='Username'
-									onChange={(e) => changeUserName(e)}
+									onChange={(e) => {
+										changeUserName(e);
+									}}
 								/>
 							)}
 							<input
@@ -97,14 +108,18 @@ export const SignModal: React.FC<ModalType> = ({ isOpen, onClose, emailValue }) 
 								className='sign-dialog__input'
 								type='email'
 								placeholder='Your email'
-								onChange={(e) => changeEmail(e)}
+								onChange={(e) => {
+									changeEmail(e);
+								}}
 							/>
 							<input
 								value={password}
 								className='sign-dialog__input'
 								type='password'
 								placeholder='Password'
-								onChange={(e) => changePass(e)}
+								onChange={(e) => {
+									changePass(e);
+								}}
 							/>
 							<div className='sign-dialog__buttons'>
 								<Button

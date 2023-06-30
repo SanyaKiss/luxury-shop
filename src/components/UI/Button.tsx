@@ -1,13 +1,13 @@
 import React from 'react';
 
-type ButtonProps = {
+interface ButtonProps {
 	text: string;
 	color: string;
 	background: string;
 	className: string;
 	onClick?: () => void;
 	type?: 'button' | 'submit';
-};
+}
 
 export const Button: React.FC<ButtonProps> = ({
 	text,

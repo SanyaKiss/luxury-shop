@@ -14,7 +14,7 @@ export const HomePage: React.FC = () => {
 			<Hero />
 			<Features />
 			<Products title='New Arrivals' limit={4} shuffled={true} hasButton={true} />
-			{!user && <SignUp />}
+			{user == null && <SignUp />}
 			<About
 				title='From a studio in London to a global brand with over 400 outlets'
 				text='When we started Luxury, the idea was simple. Make high quality

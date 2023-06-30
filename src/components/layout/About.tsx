@@ -4,14 +4,14 @@ import { Button } from '../UI/Button';
 import { Input } from '../UI/Input';
 import { useAuth } from '../../context/AuthProvider';
 
-type AboutProps = {
+interface AboutProps {
 	title: string;
 	text: string;
 	extraText?: string;
 	order: 'default' | 'reversed';
 	imgUrl: string;
 	element: 'button' | 'input';
-};
+}
 
 export const About: React.FC<AboutProps> = ({ title, text, extraText, order, imgUrl, element }) => {
 	const { user } = useAuth();
@@ -29,7 +29,7 @@ export const About: React.FC<AboutProps> = ({ title, text, extraText, order, img
 					<h3 className='about__title'>{title}</h3>
 					<p className='about__text'>{text}</p>
 					<p className='about__text--second'>{extraText}</p>
-					{element === 'button' || !user ? (
+					{element === 'button' || user == null ? (
 						<Button
 							text='Get in touch'
 							color='#2a254b'
