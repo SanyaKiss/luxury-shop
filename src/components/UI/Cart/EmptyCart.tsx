@@ -8,7 +8,7 @@ export const EmptyCart: React.FC = () => {
       <div className="empty-cart__content">
         <h2 className="empty-cart__title">Whoops!</h2>
         <img
-          src="public/images/cart/empty-cart.gif"
+          src="images/cart/empty-cart.gif"
           alt="Cart is empty"
           className="empty-cart__img"
         />

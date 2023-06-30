@@ -35,7 +35,7 @@ export const CartProduct: React.FC<CartProductProps> = ({ item }) => {
   return (
     <div className="cart-product" key={item.product.id}>
       <img
-        src="public/images/cart/del.png"
+        src="images/cart/del.png"
         alt="remove product"
         onClick={() => handleRemove(item)}
         className="cart-product__remove-btn"
