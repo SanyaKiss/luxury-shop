@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../../../scss/UI/Cart/Modal.scss";
 import { useNavigate } from "react-router";
 import { Button } from "../Button";
-import { useCart } from "../../../store/store2";
+import { useCart } from "../../../stores/cart/store";
 
 type ModalType = {
   isOpen: boolean;

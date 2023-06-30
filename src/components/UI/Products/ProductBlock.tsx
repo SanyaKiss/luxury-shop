@@ -6,7 +6,7 @@ import { Loader } from "../Loader";
 import { Counter } from "../Counter";
 import { Button } from "../Button";
 import { useQuery } from "react-query";
-import { ProductType, useCart } from "../../../store/store2";
+import { ProductType, useCart } from "../../../stores/cart/store";
 
 async function fetchProduct(id: string | undefined) {
   const { data } = await axios.get<ProductType>(

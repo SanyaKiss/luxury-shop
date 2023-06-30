@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import "../../../scss/UI/Cart/Cart.scss";
-import { CartItem } from "../../../store/cart/types";
 import { Button } from "../Button";
 import { Input } from "../Input";
 import { CartProduct } from "./CartProduct";
 import { Modal } from "./Modal";
-import { useCart } from "../../../store/store2";
+import { useCart } from "../../../stores/cart/store";
+import { CartItem } from "../../../stores/cart/types";
 
 export const Cart: React.FC = () => {
   const cart = useCart((state) => state.cart);

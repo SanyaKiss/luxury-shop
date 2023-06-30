@@ -1,19 +1,20 @@
 import React from "react";
 import "../../scss/UI/Filters.scss";
-import { useDispatch, useSelector } from "react-redux";
-import { selectFilters } from "../../store/filters/selectors";
-import { changeCategory, changeSortingType } from "../../store/filters/slice";
+
 import { categories } from "../../constants";
 import { SearchInput } from "./SearchInput";
+import { useFilters } from "../../stores/filters/filtersStore";
 
 const sortingTypes = ["Popularity", "Price", "Title"];
 
 export const Filters: React.FC = () => {
-  const dispatch = useDispatch();
-  const { category, sortingType } = useSelector(selectFilters);
-
   const categoryPopup = React.useRef<HTMLDivElement>(null);
   const sortingPopup = React.useRef<HTMLDivElement>(null);
+
+  const category = useFilters((state) => state.category);
+  const sortingType = useFilters((state) => state.sortingType);
+  const changeCategory = useFilters((state) => state.changeCategory);
+  const changeSortingType = useFilters((state) => state.changeSortingType);
 
   const [isCategoryPopupActive, setIsCategoryPopupActive] =
     React.useState(false);
@@ -55,37 +56,34 @@ export const Filters: React.FC = () => {
   }, []);
 
   return (
-    <div className="filters">
-      <div className="filters__container">
+    <div className='filters'>
+      <div className='filters__container'>
         <SearchInput />
-        <div className="filters__popups">
-          <div className="filters__category">
-            <span className="popup__subtitle">Category: </span>
+        <div className='filters__popups'>
+          <div className='filters__category'>
+            <span className='popup__subtitle'>Category: </span>
             <div
               ref={categoryPopup}
-              className="filters__popup popup"
+              className='filters__popup popup'
               onClick={() => handleClickCategoryPopup()}
             >
-              <span className="popup__title">{category}</span>
+              <span className='popup__title'>{category}</span>
               <img
-                className={`popup__arrow${
-                  isCategoryPopupActive ? "" : "--flipped"
-                }`}
-                src="public/images/filters/arrow.svg"
-                alt=""
+                className={`popup__arrow${isCategoryPopupActive ? "" : "--flipped"
+                  }`}
+                src='public/images/filters/arrow.svg'
+                alt=''
               />
               <ul
-                className={`popup__variants${
-                  isCategoryPopupActive ? "" : "--hidden"
-                }`}
+                className={`popup__variants${isCategoryPopupActive ? "" : "--hidden"
+                  }`}
               >
                 {categories.map((item, index) => (
                   <li
                     key={index}
-                    onClick={() => dispatch(changeCategory(item))}
-                    className={`popup__variant${
-                      item === category ? "--active" : ""
-                    }`}
+                    onClick={() => changeCategory(item)}
+                    className={`popup__variant${item === category ? "--active" : ""
+                      }`}
                   >
                     {item}
                   </li>
@@ -93,33 +91,30 @@ export const Filters: React.FC = () => {
               </ul>
             </div>
           </div>
-          <div className="filters__sorting">
-            <span className="popup__subtitle">Sorting by:</span>
+          <div className='filters__sorting'>
+            <span className='popup__subtitle'>Sorting by:</span>
             <div
               ref={sortingPopup}
-              className="filters__popup popup"
+              className='filters__popup popup'
               onClick={() => handleClickSortingPopup()}
             >
-              <span className="popup__title">{sortingType}</span>
+              <span className='popup__title'>{sortingType}</span>
               <img
-                className={`popup__arrow${
-                  isSortingPopupActive ? "" : "--flipped"
-                }`}
-                src="public/images/filters/arrow.svg"
-                alt=""
+                className={`popup__arrow${isSortingPopupActive ? "" : "--flipped"
+                  }`}
+                src='public/images/filters/arrow.svg'
+                alt=''
               />
               <ul
-                className={`popup__variants${
-                  isSortingPopupActive ? "" : "--hidden"
-                }`}
+                className={`popup__variants${isSortingPopupActive ? "" : "--hidden"
+                  }`}
               >
                 {sortingTypes.map((item, index) => (
                   <li
                     key={index}
-                    onClick={() => dispatch(changeSortingType(item))}
-                    className={`popup__variant${
-                      item === sortingType ? "--active" : ""
-                    }`}
+                    onClick={() => changeSortingType(item)}
+                    className={`popup__variant${item === sortingType ? "--active" : ""
+                      }`}
                   >
                     {item}
                   </li>
