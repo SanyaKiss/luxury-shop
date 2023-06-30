@@ -1,0 +1,58 @@
+{
+	"env": {
+		"browser": true,
+		"es2021": true
+	},
+	"extends": ["plugin:react/recommended", "standard-with-typescript", "prettier"],
+	"overrides": [],
+	"parser": "@typescript-eslint/parser",
+	"parserOptions": {
+		"ecmaFeatures": {
+			"jsx": true
+		},
+		"ecmaVersion": "latest",
+		"sourceType": "module",
+		"tsconfigRootDir": ".",
+		"project": ["./tsconfig.json"]
+	},
+	"plugins": ["react", "@typescript-eslint", "eslint-plugin-prettier"],
+	"settings": {
+		"import/resolver": {
+			"typescript": {
+				"project": "./tsconfig.json"
+			}
+		},
+		"react": {
+			"version": "18.x"
+		}
+	},
+	"rules": {
+		"linebreak-style": "off",
+		"@typescript-eslint/consistent-type-assertions": "off",
+		"@typescript-eslint/no-misused-promises": [
+			"error",
+			{
+				"checksVoidReturn": false
+			}
+		],
+		"@typescript-eslint/explicit-module-boundary-types": "off",
+		"@typescript-eslint/explicit-function-return-type": "off",
+		"prettier/prettier": [
+			"error",
+			{
+				"semi": true,
+				"tabWidth": 2,
+				"printWidth": 100,
+				"singleQuote": true,
+				"jsxSingleQuote": true,
+				"bracketSpacing": true,
+				"endOfLine": "auto",
+				"useTabs": true,
+				"trailingComma": "es5"
+			}
+		],
+		"react-hooks/exhaustive-deps": "off",
+		"object-shorthand": "error",
+		"no-console": "off"
+	}
+}
