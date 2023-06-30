@@ -3,20 +3,18 @@ import "../../../scss/UI/Products/Products.scss";
 
 import { Button } from "../Button";
 import { Loader } from "../Loader";
-import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { selectFilters } from "../../../store/filters/selectors";
 import { Product } from "./Product";
 import axios from "axios";
 import { shuffle } from "../../../utils/shuffle";
 import { useQuery } from "react-query";
-import { ProductType } from "../../../store/store2";
+import { useFilters } from "../../../stores/filters/filtersStore";
+import { ProductType } from "../../../stores/cart/types";
 
- type FetchParams = {
+type FetchParams = {
   args: string;
   shuffled: boolean | undefined;
 };
-
 
 type ProductsProps = {
   title?: string;
@@ -26,28 +24,27 @@ type ProductsProps = {
   currendProductId?: string;
 };
 
- async function fetchProducts (params: FetchParams){
-    const { data } = await axios.get<ProductType[]>(
-      `https://637374ac348e9472990cef38.mockapi.io/products${params.args}`
-    );
+async function fetchProducts(params: FetchParams) {
+  const { data } = await axios.get<ProductType[]>(
+    `https://637374ac348e9472990cef38.mockapi.io/products${params.args}`
+  );
 
-    if (params.shuffled) return shuffle([...data]);
-    else return data;
-  }
+  if (params.shuffled) return shuffle([...data]);
+  else return data;
+}
 
-export const Products: React.FC<ProductsProps> = ({
-  title,
-  hasButton,
-  shuffled,
-  limit,
-  currendProductId,
-}) => {
-  const { searchValue, category, sortingType } = useSelector(selectFilters);
+export const Products: React.FC<ProductsProps> = (props) => {
+  const { title, hasButton, shuffled, limit, currendProductId } = props;
+  const searchValue = useFilters((state) => state.searchValue);
+  const category = useFilters((state) => state.category);
+  const sortingType = useFilters((state) => state.sortingType);
 
   const queryParams = React.useMemo(() => {
     const categoryParam =
       category !== "All" ? `category=${category.toLowerCase()}` : "";
-    const sortingParam = sortingType ? `sortBy=${sortingType.toLowerCase()}` : "";
+    const sortingParam = sortingType
+      ? `sortBy=${sortingType.toLowerCase()}`
+      : "";
     const args = `?${categoryParam}&${sortingParam}&title=${searchValue}`;
 
     return {
@@ -55,41 +52,29 @@ export const Products: React.FC<ProductsProps> = ({
       shuffled,
     };
   }, [searchValue, category, sortingType, shuffled]);
-  
+
   const {
     data: items,
     isLoading,
     isError,
     error,
-  } = useQuery<ProductType[]>(["products", queryParams], () => fetchProducts(queryParams), {
-    keepPreviousData: true,
-    refetchOnWindowFocus: false,
-  });
+  } = useQuery<ProductType[]>(
+    ["products", queryParams],
+    () => fetchProducts(queryParams),
+    {
+      keepPreviousData: true,
+      refetchOnWindowFocus: false,
+    }
+  );
 
   if (isLoading) {
     return <Loader />;
   }
   if (isError) {
-    console.log((error as Error).message); // Type assertion
+    console.log((error as Error).message); 
   }
 
-
   let productsCount = 0;
-
-  
-  // React.useEffect(() => {
-  //   const categoryParam =
-  //     category !== "All" ? `category=${category.toLowerCase()}` : "";
-  //   const sortingParam = sortingType
-  //     ? `sortBy=${sortingType.toLowerCase()}`
-  //     : "";
-  //   const params = {
-  //     args: `?${categoryParam}&${sortingParam}&title=${searchValue}`,
-  //     shuffled,
-  //   };
-
-  //   // dispatch(fetchProducts(params));
-  // }, [searchValue, category, sortingType, id]);
 
   const productsItem = items?.map((product: ProductType, index: number) => {
     if (currendProductId === product.id) return false;
@@ -101,22 +86,22 @@ export const Products: React.FC<ProductsProps> = ({
   });
 
   return (
-    <div className="products">
-      {title && <h2 className="products__title">{title}</h2>}
+    <div className='products'>
+      {title && <h2 className='products__title'>{title}</h2>}
       {isLoading ? (
         <Loader />
       ) : isError ? (
-        <div className="loader">Some error occured while loading.</div>
+        <div className='loader'>Some error occured while loading.</div>
       ) : (
-        <div className="products__items">{productsItem}</div>
+        <div className='products__items'>{productsItem}</div>
       )}
       {hasButton && (
-        <Link to="/products" className="products__link">
+        <Link to='/products' className='products__link'>
           <Button
-            text="View collection"
-            color="#2A254B"
-            background="#F9F9F9"
-            className="products__button"
+            text='View collection'
+            color='#2A254B'
+            background='#F9F9F9'
+            className='products__button'
           />
         </Link>
       )}

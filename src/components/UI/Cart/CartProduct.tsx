@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import "../../../scss/UI/Cart/СartProduct.scss";
 
-import { CartItem } from "../../../store/cart/types";
 import { Counter } from "../Counter";
-import { useCart } from "../../../store/store2";
+import {  useCart } from "../../../stores/cart/store";
+import { CartItem } from "../../../stores/cart/types";
 
 type CartProductProps = {
   item: CartItem;

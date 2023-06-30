@@ -1,9 +1,9 @@
 import React from "react";
 import { Cart } from "../UI/Cart/Cart";
 import { useSelector } from "react-redux";
-import { selectCart } from "../../store/cart/selectors";
+import { selectCart } from "../../stores/cart/selectors";
 import { EmptyCart } from "../UI/Cart/EmptyCart";
-import { useCart } from "../../store/store2";
+import { useCart } from "../../stores/cart/store";
 
 export const CartPage: React.FC = () => {
   const cart = useCart(state => state.cart)
