@@ -2,35 +2,33 @@ import React, { useState } from "react";
 import "../../../scss/UI/Cart/СartProduct.scss";
 
 import { CartItem } from "../../../store/cart/types";
-import {
-  removeProduct,
-  increaseCount,
-  decreaseCount,
-} from "../../../store/cart/slice";
-import { useAppDispatch } from "../../../store/store";
 import { Counter } from "../Counter";
+import { useCart } from "../../../store/store2";
 
 type CartProductProps = {
   item: CartItem;
 };
 
 export const CartProduct: React.FC<CartProductProps> = ({ item }) => {
-  const dispatch = useAppDispatch();
+  const removeProduct = useCart((state) => state.removeProduct);
+  const increaseCount = useCart((state) => state.increaseCount);
+  const decreaseCount = useCart((state) => state.decreaseCount);
+
   const [count, setCount] = useState<number>(item.quantity);
 
   const handleRemove = (item: CartItem) => {
-    dispatch(removeProduct(item));
+    removeProduct(item);
   };
 
   const increase = (item: CartItem) => {
     setCount(count + 1);
-    dispatch(increaseCount(item));
+    increaseCount(item);
   };
 
   const decrease = (item: CartItem) => {
     if (count > 1) {
       setCount(count - 1);
-      dispatch(decreaseCount(item));
+      decreaseCount(item);
     }
   };
 

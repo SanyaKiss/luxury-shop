@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import "../../../scss/UI/Cart/Cart.scss";
-import { useSelector } from "react-redux";
-import { selectCart } from "../../../store/cart/selectors";
 import { CartItem } from "../../../store/cart/types";
 import { Button } from "../Button";
 import { Input } from "../Input";
 import { CartProduct } from "./CartProduct";
 import { Modal } from "./Modal";
+import { useCart } from "../../../store/store2";
 
 export const Cart: React.FC = () => {
-  const { cart, totalPrice } = useSelector(selectCart);
+  const cart = useCart((state) => state.cart);
+  const totalPrice = useCart((state) => state.totalPrice);
+
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleDialog = () => setIsOpen(!isOpen);

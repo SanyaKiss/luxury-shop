@@ -1,7 +1,7 @@
 import React from "react";
 import "../../../scss/UI/Products/Product.scss";
 import { Link } from "react-router-dom";
-import { ProductType } from "../../../store/products/types";
+import { ProductType } from "../../../store/store2";
 
 export const Product: React.FC<ProductType> = ({
   id,

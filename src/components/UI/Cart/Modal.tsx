@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import "../../../scss/UI/Cart/Modal.scss";
 import { useNavigate } from "react-router";
-import { clearCart } from "../../../store/cart/slice";
 import { Button } from "../Button";
-import { useAppDispatch } from "../../../store/store";
+import { useCart } from "../../../store/store2";
 
 type ModalType = {
   isOpen: boolean;
@@ -11,9 +10,9 @@ type ModalType = {
 };
 
 export const Modal: React.FC<ModalType> = ({ isOpen, onClose }) => {
-  const navigate = useNavigate();
-  const dispatch = useAppDispatch();
   const [success, setSuccess] = useState<boolean>(false);
+  const navigate = useNavigate();
+  const clearCart = useCart((state) => state.clearCart);
 
   const onSubmit = () => {
     setSuccess(true);
@@ -21,7 +20,7 @@ export const Modal: React.FC<ModalType> = ({ isOpen, onClose }) => {
 
   const returnToHome = () => {
     navigate("/");
-    dispatch(clearCart());
+    clearCart();
   };
 
   return (

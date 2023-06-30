@@ -1,49 +1,50 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "../../../scss/UI/Products/ProductBlock.scss";
-
 import { useNavigate, useParams } from "react-router";
-import { useAppDispatch } from "../../../store/store";
-import { addProduct } from "../../../store/cart/slice";
 import { Loader } from "../Loader";
 import { Counter } from "../Counter";
-import { ProductType } from "../../../store/products/types";
 import { Button } from "../Button";
+import { useQuery } from "react-query";
+import { ProductType, useCart } from "../../../store/store2";
+
+async function fetchProduct(id: string | undefined) {
+  const { data } = await axios.get<ProductType>(
+    `https://637374ac348e9472990cef38.mockapi.io/products/${id}`
+  );
+
+  return data;
+}
 
 export const ProductBlock: React.FC = () => {
   const { id } = useParams();
-  const navigate = useNavigate();
-  const dispatch = useAppDispatch();
-
   const [count, setCount] = useState<number>(1);
-  const [product, setProduct] = React.useState<ProductType>();
+  const navigate = useNavigate();
+  const addProduct = useCart((state) => state.addProduct);
 
-  React.useEffect(() => {
-    async function fetchProduct() {
-      try {
-        const { data } = await axios.get<ProductType>(
-          `https://637374ac348e9472990cef38.mockapi.io/products/${id}`
-        );
-        setProduct(data);
-      } catch (error) {
-        console.error(error);
-        navigate("/");
-      }
-    }
+  const {
+    data: product,
+    isLoading,
+    isError,
+    error,
+  } = useQuery<ProductType>(["product", id], () => fetchProduct(id), {
+    keepPreviousData: true,
+    refetchOnWindowFocus: false,
+  });
 
-    fetchProduct();
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }, [id]);
-
-  if (!product) return <Loader />;
+  if (isLoading) {
+    return <Loader />;
+  }
+  if (isError) {
+    console.log((error as Error).message); // Type assertion
+    navigate("/");
+  }
 
   const addToCart = () => {
-    dispatch(
-      addProduct({
-        product,
-        quantity: count,
-      })
-    );
+    addProduct({
+      product,
+      quantity: count,
+    });
     setCount(1);
   };
 
@@ -59,15 +60,15 @@ export const ProductBlock: React.FC = () => {
 
   return (
     <div className="product-block">
-      {product.id === id ? (
+      {product?.id === id ? (
         <>
-          <img src={product.imgUrl} className="product-block__img" />
+          <img src={product?.imgUrl} className="product-block__img" />
           <div className="product-block__content">
             <div className="product-block__container">
-              <h2 className="product-block__title">{product.title}</h2>
-              <h3 className="product-block__price">£{product.price}</h3>
+              <h2 className="product-block__title">{product?.title}</h2>
+              <h3 className="product-block__price">£{product?.price}</h3>
               <p className="product-block__description">
-                {product.description}
+                {product?.description}
               </p>
               <div className="product-block__btn-container">
                 <Button
