@@ -3,11 +3,11 @@ import '../../../scss/UI/Cart/СartProduct.scss';
 
 import { Counter } from '../Counter';
 import { useCart } from '../../../stores/cart/store';
-import { CartItem } from '../../../stores/cart/types';
+import { type CartItem } from '../../../stores/cart/types';
 
-type CartProductProps = {
+interface CartProductProps {
 	item: CartItem;
-};
+}
 
 export const CartProduct: React.FC<CartProductProps> = ({ item }) => {
 	const removeProduct = useCart((state) => state.removeProduct);
@@ -37,7 +37,9 @@ export const CartProduct: React.FC<CartProductProps> = ({ item }) => {
 			<img
 				src='public/images/cart/del.png'
 				alt='remove product'
-				onClick={() => handleRemove(item)}
+				onClick={() => {
+					handleRemove(item);
+				}}
 				className='cart-product__remove-btn'
 			/>
 			<div className='cart-product__content content '>
@@ -48,7 +50,15 @@ export const CartProduct: React.FC<CartProductProps> = ({ item }) => {
 			</div>
 			<div className='cart-product__price price column '>$ {item.product.price}</div>
 			<div className='cart-product__quantity quantity column'>
-				<Counter count={count} increase={() => increase(item)} decrease={() => decrease(item)} />
+				<Counter
+					count={count}
+					increase={() => {
+						increase(item);
+					}}
+					decrease={() => {
+						decrease(item);
+					}}
+				/>
 			</div>
 			<div className='cart-product__unit-price unit-price column'>
 				$ {item.quantity * item.product.price}

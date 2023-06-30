@@ -4,10 +4,10 @@ import { useNavigate } from 'react-router';
 import { Button } from '../Button';
 import { useCart } from '../../../stores/cart/store';
 
-type ModalType = {
+interface ModalType {
 	isOpen: boolean;
 	onClose: () => void;
-};
+}
 
 export const Modal: React.FC<ModalType> = ({ isOpen, onClose }) => {
 	const [success, setSuccess] = useState<boolean>(false);

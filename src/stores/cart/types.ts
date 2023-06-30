@@ -19,4 +19,4 @@ export type Store = {
 	increaseCount: (item: CartItem) => void;
 	decreaseCount: (item: CartItem) => void;
 	clearCart: () => void;
-};
+}

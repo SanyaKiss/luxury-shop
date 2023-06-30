@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from 'react';
+import React, { type ChangeEvent, useState } from 'react';
 import '../../scss/UI/SearchInput.scss';
 import { useFilters } from '../../stores/filters/store';
 
@@ -18,7 +18,9 @@ export const SearchInput: React.FC = () => {
 				className='search-input'
 				type='text'
 				value={value}
-				onChange={(e) => onChange(e)}
+				onChange={(e) => {
+					onChange(e);
+				}}
 			/>
 			<img src='public/images/header/search.png' className='search-icon' />
 		</div>

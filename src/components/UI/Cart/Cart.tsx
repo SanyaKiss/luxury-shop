@@ -5,7 +5,7 @@ import { Input } from '../Input';
 import { CartProduct } from './CartProduct';
 import { Modal } from './Modal';
 import { useCart } from '../../../stores/cart/store';
-import { CartItem } from '../../../stores/cart/types';
+import { type CartItem } from '../../../stores/cart/types';
 
 export const Cart: React.FC = () => {
 	const cart = useCart((state) => state.cart);
@@ -13,7 +13,9 @@ export const Cart: React.FC = () => {
 
 	const [isOpen, setIsOpen] = useState(false);
 
-	const toggleDialog = () => setIsOpen(!isOpen);
+	const toggleDialog = () => {
+		setIsOpen(!isOpen);
+	};
 
 	return (
 		<div className='cart'>
