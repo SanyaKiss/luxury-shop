@@ -18,14 +18,14 @@ export const App: React.FC = () => {
 
   return (
     <Routes>
-      <Route path="/" element={<Default />}>
+      <Route path='/' element={<Default />}>
         <Route index element={<HomePage />} />
-        <Route path="products" element={<ProductsPage />} />
-        <Route path="products/:category" element={<ProductsPage />} />
-        <Route path="product/:id" element={<ProductPage />} />
-        <Route path="about" element={<AboutPage />} />
-        <Route path="cart" element={<CartPage />} />
-        <Route path="*" element={<NotFoundPage />} />
+        <Route path='products' element={<ProductsPage />} />
+        <Route path='products/:category' element={<ProductsPage />} />
+        <Route path='product/:id' element={<ProductPage />} />
+        <Route path='about' element={<AboutPage />} />
+        <Route path='cart' element={<CartPage />} />
+        <Route path='*' element={<NotFoundPage />} />
       </Route>
     </Routes>
   );

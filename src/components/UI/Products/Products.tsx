@@ -8,8 +8,8 @@ import { Product } from "./Product";
 import axios from "axios";
 import { shuffle } from "../../../utils/shuffle";
 import { useQuery } from "react-query";
-import { ProductType } from "../../../stores/cart/store";
 import { useFilters } from "../../../stores/filters/filtersStore";
+import { ProductType } from "../../../stores/cart/types";
 
 type FetchParams = {
   args: string;
@@ -71,24 +71,10 @@ export const Products: React.FC<ProductsProps> = (props) => {
     return <Loader />;
   }
   if (isError) {
-    console.log((error as Error).message); // Type assertion
+    console.log((error as Error).message); 
   }
 
   let productsCount = 0;
-
-  // React.useEffect(() => {
-  //   const categoryParam =
-  //     category !== "All" ? `category=${category.toLowerCase()}` : "";
-  //   const sortingParam = sortingType
-  //     ? `sortBy=${sortingType.toLowerCase()}`
-  //     : "";
-  //   const params = {
-  //     args: `?${categoryParam}&${sortingParam}&title=${searchValue}`,
-  //     shuffled,
-  //   };
-
-  //   // dispatch(fetchProducts(params));
-  // }, [searchValue, category, sortingType, id]);
 
   const productsItem = items?.map((product: ProductType, index: number) => {
     if (currendProductId === product.id) return false;
