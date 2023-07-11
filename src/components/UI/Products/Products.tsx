@@ -29,7 +29,7 @@ async function fetchProducts(params: FetchParams) {
 		`https://637374ac348e9472990cef38.mockapi.io/products${params.args}`
 	);
 
-	if (params.shuffled) return shuffle([...data]);
+	if (params.shuffled ?? false) return shuffle([...data]);
 	else return data;
 }
 
@@ -41,7 +41,7 @@ export const Products: React.FC<ProductsProps> = (props) => {
 
 	const queryParams = React.useMemo(() => {
 		const categoryParam = category !== 'All' ? `category=${category.toLowerCase()}` : '';
-		const sortingParam = sortingType ? `sortBy=${sortingType.toLowerCase()}` : '';
+		const sortingParam = sortingType.length > 0 ? `sortBy=${sortingType.toLowerCase()}` : '';
 		const args = `?${categoryParam}&${sortingParam}&title=${searchValue}`;
 
 		return {
@@ -75,7 +75,7 @@ export const Products: React.FC<ProductsProps> = (props) => {
 
 	const productsItem = items?.map((product: ProductType, index: number) => {
 		if (currendProductId === product.id) return false;
-		if (limit && productsCount >= limit) return false;
+		if (limit != null && productsCount >= limit) return false;
 
 		productsCount++;
 
@@ -84,7 +84,7 @@ export const Products: React.FC<ProductsProps> = (props) => {
 
 	return (
 		<div className='products'>
-			{title && <h2 className='products__title'>{title}</h2>}
+			{title != null && <h2 className='products__title'>{title}</h2>}
 			{isLoading ? (
 				<Loader />
 			) : isError ? (
@@ -92,7 +92,7 @@ export const Products: React.FC<ProductsProps> = (props) => {
 			) : (
 				<div className='products__items'>{productsItem}</div>
 			)}
-			{hasButton && (
+			{(hasButton ?? false) && (
 				<Link to='/products' className='products__link'>
 					<Button
 						text='View collection'

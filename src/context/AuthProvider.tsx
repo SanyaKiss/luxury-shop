@@ -34,12 +34,12 @@ export const AuthProvider: FC<{ children: JSX.Element }> = ({ children }) => {
 		setLoading(true);
 		try {
 			const { user } = await register(email, password);
-			await updateProfile(user, { displayName: userName });
-			await setDoc(doc(DB, 'users', email), {
-				email: user.email,
-				id: user.uid,
-				userName: user.displayName,
-			});
+				await updateProfile(user, { displayName: userName });
+				await setDoc(doc(DB, 'users', email), {
+					email: user.email,
+					id: user.uid,
+					userName: user.displayName,
+				});
 		} catch (e) {
 			console.error(e);
 		} finally {
@@ -94,7 +94,8 @@ export const AuthProvider: FC<{ children: JSX.Element }> = ({ children }) => {
 			onAuthStateChanged(AUTH, (user) => {
 				setUser(user);
 				console.info(user, 'auth user');
-			}),
+			}
+			),
 		[]
 	);
 

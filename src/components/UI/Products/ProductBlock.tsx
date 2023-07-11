@@ -11,7 +11,7 @@ import { type ProductType } from '../../../stores/cart/types';
 
 async function fetchProduct(id: string | undefined) {
 	const { data } = await axios.get<ProductType>(
-		`https://637374ac348e9472990cef38.mockapi.io/products/${id}`
+		`https://637374ac348e9472990cef38.mockapi.io/products/${id!}`
 	);
 
 	return data;
@@ -37,7 +37,7 @@ export const ProductBlock: React.FC = () => {
 		return <Loader />;
 	}
 	if (isError) {
-		console.log((error as Error).message); // Type assertion
+		console.log((error as Error).message);
 		navigate('/');
 	}
 

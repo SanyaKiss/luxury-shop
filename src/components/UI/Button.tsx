@@ -29,7 +29,7 @@ export const Button: React.FC<ButtonProps> = ({
 	};
 
 	return (
-		<button type={type ? type : 'button'} onClick={onClick} style={styles} className={className}>
+		<button type={type ?? 'button'} onClick={onClick} style={styles} className={className}>
 			{text}
 		</button>
 	);

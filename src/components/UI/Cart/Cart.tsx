@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../../../scss/UI/Cart/Cart.scss';
+
 import { Button } from '../Button';
 import { Input } from '../Input';
 import { CartProduct } from './CartProduct';
@@ -27,7 +28,7 @@ export const Cart: React.FC = () => {
 			</div>
 			<div className='cart-products'>
 				{cart.map((item: CartItem) => (
-					<CartProduct item={item} />
+					<CartProduct item={item} key={Math.random()} />
 				))}
 			</div>
 			<div className='cart-check'>

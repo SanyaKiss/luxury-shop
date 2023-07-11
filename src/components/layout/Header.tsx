@@ -48,7 +48,7 @@ export const Header: React.FC<HeaderProps> = ({ cropped }) => {
 					/>
 				</nav>
 			</div>
-			{!cropped && (
+			{!(cropped ?? false) && (
 				<div className='header__bottom'>
 					<div className='header__links'>
 						{categories.map((item, index) => {
@@ -65,6 +65,7 @@ export const Header: React.FC<HeaderProps> = ({ cropped }) => {
 										{item}
 									</Link>
 								);
+							return null;
 						})}
 					</div>
 				</div>

@@ -33,7 +33,7 @@ export const CartProduct: React.FC<CartProductProps> = ({ item }) => {
 	};
 
 	return (
-		<div className='cart-product' key={item.product.id}>
+		<div className='cart-product' key={item?.product?.id}>
 			<img
 				src='public/images/cart/del.png'
 				alt='remove product'
@@ -44,11 +44,11 @@ export const CartProduct: React.FC<CartProductProps> = ({ item }) => {
 			/>
 			<div className='cart-product__content content '>
 				<div className='cart-product__img'>
-					<img src={item.product.imgUrl} alt='' />
+					<img src={item?.product?.imgUrl} alt='' />
 				</div>
-				<div className='cart-product__title '>{item.product.title}</div>
+				<div className='cart-product__title '>{item?.product?.title}</div>
 			</div>
-			<div className='cart-product__price price column '>$ {item.product.price}</div>
+			<div className='cart-product__price price column '>$ {item?.product?.price}</div>
 			<div className='cart-product__quantity quantity column'>
 				<Counter
 					count={count}
@@ -60,9 +60,11 @@ export const CartProduct: React.FC<CartProductProps> = ({ item }) => {
 					}}
 				/>
 			</div>
-			<div className='cart-product__unit-price unit-price column'>
-				$ {item.quantity * item.product.price}
-			</div>
+			{item.product?.price != null && (
+				<div className='cart-product__unit-price unit-price column'>
+					$ {item.quantity * item.product.price}
+				</div>
+			)}
 		</div>
 	);
 };

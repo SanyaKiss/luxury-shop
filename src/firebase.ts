@@ -26,7 +26,9 @@ export const register = async (email: string, password: string) =>
 export const login = async (email: string, password: string) =>
 	await signInWithEmailAndPassword(AUTH, email, password);
 
-export const logout = async () => await signOut(AUTH);
+export const logout = async () => {
+	await signOut(AUTH);
+};
 
 export const DB = getFirestore(app);
 

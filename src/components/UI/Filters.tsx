@@ -29,10 +29,10 @@ export const Filters: React.FC = () => {
 
 	React.useEffect(() => {
 		const handleClickOutside = (event: MouseEvent) => {
-			if (categoryPopup.current && !event.composedPath().includes(categoryPopup.current)) {
+			if (categoryPopup.current != null && !event.composedPath().includes(categoryPopup.current)) {
 				setIsCategoryPopupActive(false);
 			}
-			if (sortingPopup.current && !event.composedPath().includes(sortingPopup.current)) {
+			if (sortingPopup.current != null && !event.composedPath().includes(sortingPopup.current)) {
 				setIsSortingPopupActive(false);
 			}
 		};
@@ -54,7 +54,9 @@ export const Filters: React.FC = () => {
 						<div
 							ref={categoryPopup}
 							className='filters__popup popup'
-							onClick={() => handleClickCategoryPopup()}
+							onClick={() => {
+								handleClickCategoryPopup();
+							}}
 						>
 							<span className='popup__title'>{category}</span>
 							<img
@@ -66,7 +68,9 @@ export const Filters: React.FC = () => {
 								{categories.map((item, index) => (
 									<li
 										key={index}
-										onClick={() => changeCategory(item)}
+										onClick={() => {
+											changeCategory(item);
+										}}
 										className={`popup__variant${item === category ? '--active' : ''}`}
 									>
 										{item}
@@ -80,7 +84,9 @@ export const Filters: React.FC = () => {
 						<div
 							ref={sortingPopup}
 							className='filters__popup popup'
-							onClick={() => handleClickSortingPopup()}
+							onClick={() => {
+								handleClickSortingPopup();
+							}}
 						>
 							<span className='popup__title'>{sortingType}</span>
 							<img
@@ -92,7 +98,9 @@ export const Filters: React.FC = () => {
 								{sortingTypes.map((item, index) => (
 									<li
 										key={index}
-										onClick={() => changeSortingType(item)}
+										onClick={() => {
+											changeSortingType(item);
+										}}
 										className={`popup__variant${item === sortingType ? '--active' : ''}`}
 									>
 										{item}

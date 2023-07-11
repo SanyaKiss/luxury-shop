@@ -7,7 +7,7 @@ export interface ProductType {
 }
 
 export interface CartItem {
-	product: ProductType;
+	product: ProductType | undefined;
 	quantity: number;
 }
 

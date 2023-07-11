@@ -23,12 +23,14 @@ export const Footer: React.FC = () => {
 					<ul className='footer__categories'>
 						<li className='categories__title'>Categories</li>
 						{categories.map((item, index) => {
-							if (item !== 'All')
+							if (item !== 'All') {
 								return (
 									<Link to='/products' key={index} className='item'>
 										{item}
 									</Link>
 								);
+							}
+							return null;
 						})}
 					</ul>
 					<ul className='footer__info'>
