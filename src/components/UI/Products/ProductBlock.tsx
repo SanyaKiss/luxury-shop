@@ -42,11 +42,12 @@ export const ProductBlock: React.FC = () => {
 	}
 
 	const addToCart = () => {
+		if (!product) return; 
 		addProduct({
 			product,
 			quantity: count,
 		});
-		setCount(1);
+				setCount(1);
 	};
 
 	const increase = () => {
