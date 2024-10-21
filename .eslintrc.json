@@ -27,6 +27,7 @@
 		}
 	},
 	"rules": {
+		"no-unneeded-ternary": "off",
 		"linebreak-style": "off",
 		"@typescript-eslint/consistent-type-assertions": "off",
 		"@typescript-eslint/no-misused-promises": [

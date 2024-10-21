@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
-/* eslint-disable @typescript-eslint/prefer-ts-expect-error */
 import { initializeApp } from 'firebase/app'
 import {
 	getAuth,
@@ -26,16 +24,16 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig)
 
-export const AUTH = getAuth(app)
+export const auth = getAuth(app)
 
 export const register = async (email: string, password: string) =>
-	await createUserWithEmailAndPassword(AUTH, email, password)
+	await createUserWithEmailAndPassword(auth, email, password)
 
 export const login = async (email: string, password: string) =>
-	await signInWithEmailAndPassword(AUTH, email, password)
+	await signInWithEmailAndPassword(auth, email, password)
 
 export const logout = async () => {
-	await signOut(AUTH)
+	await signOut(auth)
 }
 
 export const DB = getFirestore(app)

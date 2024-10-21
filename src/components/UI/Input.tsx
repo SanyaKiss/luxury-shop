@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button } from './Button';
-import { SignModal } from './SignModal';
+import { SignModal } from './SignModal/SignModal';
 
 interface InputProps {
 	text: string;

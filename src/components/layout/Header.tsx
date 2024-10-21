@@ -3,7 +3,7 @@ import '../../scss/layout/Header.scss';
 import { categories } from '../../constants';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../context/AuthProvider';
-import { SignModal } from '../UI/SignModal';
+import { SignModal } from '../UI/SignModal/SignModal';
 import { useFilters } from '../../stores/filters/store';
 
 interface HeaderProps {
