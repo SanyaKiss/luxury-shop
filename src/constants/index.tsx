@@ -6,22 +6,22 @@ export interface FeatureType {
 
 export const features: FeatureType[] = [
 	{
-		imgUrl: 'public/images/features/delivery.svg',
+		imgUrl: 'images/features/delivery.svg',
 		title: 'Next day as standard',
 		text: 'Order before 3pm and get your order the next day as standard',
 	},
 	{
-		imgUrl: 'public/images/features/checkmark.svg',
+		imgUrl: 'images/features/checkmark.svg',
 		title: 'Made by true artisans',
 		text: 'Handmade crafted goods made with real passion and craftmanship',
 	},
 	{
-		imgUrl: 'public/images/features/purchase.svg',
+		imgUrl: 'images/features/purchase.svg',
 		title: 'Unbeatable prices',
 		text: 'For our materials and quality you won’t find better prices anywhere',
 	},
 	{
-		imgUrl: 'public/images/features/sprout.svg',
+		imgUrl: 'images/features/sprout.svg',
 		title: 'Recycled packaging',
 		text: 'We use 100% recycled to ensure our footprint is more manageable',
 	},

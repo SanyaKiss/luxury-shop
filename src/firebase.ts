@@ -1,11 +1,13 @@
-import { initializeApp } from 'firebase/app';
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+/* eslint-disable @typescript-eslint/prefer-ts-expect-error */
+import { initializeApp } from 'firebase/app'
 import {
 	getAuth,
 	signInWithEmailAndPassword,
 	signOut,
 	createUserWithEmailAndPassword,
-} from 'firebase/auth';
-import { getFirestore } from 'firebase/firestore';
+} from 'firebase/auth'
+import { getFirestore } from 'firebase/firestore'
 
 const firebaseConfig = {
 	// @ts-ignore
@@ -20,23 +22,23 @@ const firebaseConfig = {
 	messagingSenderId: import.meta.env.VITE_MESSAGING_SENDER_ID,
 	// @ts-ignore
 	appId: import.meta.env.VITE_APP_ID,
-};
+}
 
-const app = initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig)
 
-export const AUTH = getAuth(app);
+export const AUTH = getAuth(app)
 
 export const register = async (email: string, password: string) =>
-	await createUserWithEmailAndPassword(AUTH, email, password);
+	await createUserWithEmailAndPassword(AUTH, email, password)
 
 export const login = async (email: string, password: string) =>
-	await signInWithEmailAndPassword(AUTH, email, password);
+	await signInWithEmailAndPassword(AUTH, email, password)
 
 export const logout = async () => {
-	await signOut(AUTH);
-};
+	await signOut(AUTH)
+}
 
-export const DB = getFirestore(app);
+export const DB = getFirestore(app)
 
 export enum DBCollections {
 	STORIES = 'stories',

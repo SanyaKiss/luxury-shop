@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 export const Hero: React.FC = () => {
 	return (
 		<section className='hero'>
-			<img src='public/images/hero/hero.jpg' alt='Hero' className='hero__bg' />
+			<img src='images/hero/hero.jpg' alt='Hero' className='hero__bg' />
 			<div className='hero__block'>
 				<div className='block__container'>
 					<h2 className='block__title'>

@@ -61,7 +61,7 @@ export const Filters: React.FC = () => {
 							<span className='popup__title'>{category}</span>
 							<img
 								className={`popup__arrow${isCategoryPopupActive ? '' : '--flipped'}`}
-								src='public/images/filters/arrow.svg'
+								src='images/filters/arrow.svg'
 								alt=''
 							/>
 							<ul className={`popup__variants${isCategoryPopupActive ? '' : '--hidden'}`}>
@@ -91,7 +91,7 @@ export const Filters: React.FC = () => {
 							<span className='popup__title'>{sortingType}</span>
 							<img
 								className={`popup__arrow${isSortingPopupActive ? '' : '--flipped'}`}
-								src='public/images/filters/arrow.svg'
+								src='images/filters/arrow.svg'
 								alt=''
 							/>
 							<ul className={`popup__variants${isSortingPopupActive ? '' : '--hidden'}`}>

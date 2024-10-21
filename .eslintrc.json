@@ -41,15 +41,14 @@
 		"prettier/prettier": [
 			"error",
 			{
-				"semi": true,
+				"semi": false,
 				"tabWidth": 2,
 				"printWidth": 100,
 				"singleQuote": true,
 				"jsxSingleQuote": true,
 				"bracketSpacing": true,
 				"endOfLine": "auto",
-				"useTabs": true,
-				"trailingComma": "es5"
+				"useTabs": true
 			}
 		],
 		"react-hooks/exhaustive-deps": "off",
