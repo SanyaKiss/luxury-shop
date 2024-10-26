@@ -29,6 +29,7 @@
 	"rules": {
 		"no-unneeded-ternary": "off",
 		"linebreak-style": "off",
+		"react/react-in-jsx-scope": "off",
 		"@typescript-eslint/consistent-type-assertions": "off",
 		"@typescript-eslint/no-misused-promises": [
 			"error",

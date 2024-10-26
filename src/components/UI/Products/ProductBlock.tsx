@@ -1,27 +1,27 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import '../../../scss/UI/Products/ProductBlock.scss';
-import { useNavigate, useParams } from 'react-router';
-import { Loader } from '../Loader';
-import { Counter } from '../Counter';
-import { Button } from '../Button';
-import { useQuery } from 'react-query';
-import { useCart } from '../../../stores/cart/store';
-import { type ProductType } from '../../../stores/cart/types';
+import React, { useState } from 'react'
+import axios from 'axios'
+import '../../../scss/UI/Products/ProductBlock.scss'
+import { useNavigate, useParams } from 'react-router'
+import { Loader } from '../Loader'
+import { Counter } from '../Counter/Counter'
+import { Button } from '../Button'
+import { useQuery } from 'react-query'
+import { useCart } from '../../../stores/cart/store'
+import { type ProductType } from '../../../stores/cart/types'
 
 async function fetchProduct(id: string | undefined) {
 	const { data } = await axios.get<ProductType>(
 		`https://637374ac348e9472990cef38.mockapi.io/products/${id!}`
-	);
+	)
 
-	return data;
+	return data
 }
 
 export const ProductBlock: React.FC = () => {
-	const { id } = useParams();
-	const [count, setCount] = useState<number>(1);
-	const navigate = useNavigate();
-	const addProduct = useCart((state) => state.addProduct);
+	const { id } = useParams()
+	const [count, setCount] = useState<number>(1)
+	const navigate = useNavigate()
+	const addProduct = useCart((state) => state.addProduct)
 
 	const {
 		data: product,
@@ -31,34 +31,34 @@ export const ProductBlock: React.FC = () => {
 	} = useQuery<ProductType>(['product', id], async () => await fetchProduct(id), {
 		keepPreviousData: true,
 		refetchOnWindowFocus: false,
-	});
+	})
 
 	if (isLoading) {
-		return <Loader />;
+		return <Loader />
 	}
 	if (isError) {
-		console.log((error as Error).message);
-		navigate('/');
+		console.log((error as Error).message)
+		navigate('/')
 	}
 
 	const addToCart = () => {
-		if (!product) return; 
+		if (!product) return
 		addProduct({
 			product,
 			quantity: count,
-		});
-				setCount(1);
-	};
+		})
+		setCount(1)
+	}
 
 	const increase = () => {
-		setCount(count + 1);
-	};
+		setCount(count + 1)
+	}
 
 	const decrease = () => {
 		if (count > 1) {
-			setCount(count - 1);
+			setCount(count - 1)
 		}
-	};
+	}
 
 	return (
 		<div className='product-block'>
@@ -81,10 +81,10 @@ export const ProductBlock: React.FC = () => {
 								<Counter
 									count={count}
 									increase={() => {
-										increase();
+										increase()
 									}}
 									decrease={() => {
-										decrease();
+										decrease()
 									}}
 								/>
 							</div>
@@ -95,5 +95,5 @@ export const ProductBlock: React.FC = () => {
 				<Loader />
 			)}
 		</div>
-	);
-};
+	)
+}

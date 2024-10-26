@@ -1,22 +1,22 @@
-import React, { useState } from 'react';
-import '../../../scss/UI/Cart/Cart.scss';
+import React, { useState } from 'react'
+import '../../../scss/UI/Cart/Cart.scss'
 
-import { Button } from '../Button';
-import { Input } from '../Input';
-import { CartProduct } from './CartProduct';
-import { Modal } from './Modal';
-import { useCart } from '../../../stores/cart/store';
-import { type CartItem } from '../../../stores/cart/types';
+import { Button } from '../Button'
+import { Input } from '../Input'
+import { CartProduct } from './CartProduct/CartProduct'
+import { Modal } from './Modal'
+import { useCart } from '../../../stores/cart/store'
+import { type CartItem } from '../../../stores/cart/types'
 
 export const Cart: React.FC = () => {
-	const cart = useCart((state) => state.cart);
-	const totalPrice = useCart((state) => state.totalPrice);
+	const cart = useCart((state) => state.cart)
+	const totalPrice = useCart((state) => state.totalPrice)
 
-	const [isOpen, setIsOpen] = useState(false);
+	const [isOpen, setIsOpen] = useState(false)
 
 	const toggleDialog = () => {
-		setIsOpen(!isOpen);
-	};
+		setIsOpen(!isOpen)
+	}
 
 	return (
 		<div className='cart'>
@@ -69,5 +69,5 @@ export const Cart: React.FC = () => {
 			</div>
 			<Modal isOpen={isOpen} onClose={toggleDialog} />
 		</div>
-	);
-};
+	)
+}

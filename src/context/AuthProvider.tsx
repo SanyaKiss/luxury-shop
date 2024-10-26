@@ -7,8 +7,7 @@ import {
 	signInWithPopup,
 } from 'firebase/auth'
 import React, { type FC, createContext, useEffect, useMemo, useState, useContext } from 'react'
-import { auth, DB, register, login, logout } from '../firebase'
-import { setDoc, doc } from 'firebase/firestore'
+import { auth, register, login, logout } from '../firebase'
 
 interface IContext {
 	user: User | null

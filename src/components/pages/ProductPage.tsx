@@ -1,14 +1,14 @@
-import React from 'react';
-import { useParams } from 'react-router';
-import { ProductBlock } from '../UI/Products/ProductBlock';
-import { Products } from '../UI/Products/Products';
-import { Features } from '../layout/Features';
-import { SignUp } from '../layout/SignUp';
-import { useAuth } from '../../context/AuthProvider';
+import React from 'react'
+import { useParams } from 'react-router'
+import { ProductBlock } from '../UI/Products/ProductBlock'
+import { Products } from '../UI/Products/Products'
+import { Features } from '../layout/Features'
+import { SignUp } from '../layout/SignUp'
+import { useAuth } from '../../context/AuthProvider'
 
 export const ProductPage: React.FC = () => {
-	const { id } = useParams();
-	const { user } = useAuth();
+	const { id } = useParams()
+	const { user } = useAuth()
 	return (
 		<>
 			<ProductBlock />
@@ -16,5 +16,5 @@ export const ProductPage: React.FC = () => {
 			<Features />
 			{user == null && <SignUp />}
 		</>
-	);
-};
+	)
+}

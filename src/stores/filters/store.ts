@@ -1,5 +1,5 @@
-import { create } from 'zustand';
-import { type FiltersStore } from './types';
+import { create } from 'zustand'
+import { type FiltersStore } from './types'
 
 export const useFilters = create<FiltersStore>((set) => ({
 	searchValue: '',
@@ -7,20 +7,20 @@ export const useFilters = create<FiltersStore>((set) => ({
 	sortingType: 'Popularity',
 	setSearchValue: (value) => {
 		set((state) => {
-			state.searchValue = value;
-			return { ...state };
-		});
+			state.searchValue = value
+			return { ...state }
+		})
 	},
 	changeCategory: (category) => {
 		set((state) => {
-			state.category = category;
-			return { ...state };
-		});
+			state.category = category
+			return { ...state }
+		})
 	},
 	changeSortingType: (sort) => {
 		set((state) => {
-			state.sortingType = sort;
-			return { ...state };
-		});
+			state.sortingType = sort
+			return { ...state }
+		})
 	},
-}));
+}))

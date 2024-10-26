@@ -1,36 +1,36 @@
-import React, { useState } from 'react';
-import '../../../scss/UI/Cart/СartProduct.scss';
+import React, { useState } from 'react'
+import '../../../../scss/UI/Cart/СartProduct.scss'
 
-import { Counter } from '../Counter';
-import { useCart } from '../../../stores/cart/store';
-import { type CartItem } from '../../../stores/cart/types';
+import { Counter } from '../../Counter/Counter'
+import { useCart } from '../../../../stores/cart/store'
+import { type CartItem } from '../../../../stores/cart/types'
 
 interface CartProductProps {
-	item: CartItem;
+	item: CartItem
 }
 
 export const CartProduct: React.FC<CartProductProps> = ({ item }) => {
-	const removeProduct = useCart((state) => state.removeProduct);
-	const increaseCount = useCart((state) => state.increaseCount);
-	const decreaseCount = useCart((state) => state.decreaseCount);
+	const removeProduct = useCart((state) => state.removeProduct)
+	const increaseCount = useCart((state) => state.increaseCount)
+	const decreaseCount = useCart((state) => state.decreaseCount)
 
-	const [count, setCount] = useState<number>(item.quantity);
+	const [count, setCount] = useState<number>(item.quantity)
 
 	const handleRemove = (item: CartItem) => {
-		removeProduct(item);
-	};
+		removeProduct(item)
+	}
 
 	const increase = (item: CartItem) => {
-		setCount(count + 1);
-		increaseCount(item);
-	};
+		setCount(count + 1)
+		increaseCount(item)
+	}
 
 	const decrease = (item: CartItem) => {
 		if (count > 1) {
-			setCount(count - 1);
-			decreaseCount(item);
+			setCount(count - 1)
+			decreaseCount(item)
 		}
-	};
+	}
 
 	return (
 		<div className='cart-product' key={item?.product?.id}>
@@ -38,7 +38,7 @@ export const CartProduct: React.FC<CartProductProps> = ({ item }) => {
 				src='images/cart/del.png'
 				alt='remove product'
 				onClick={() => {
-					handleRemove(item);
+					handleRemove(item)
 				}}
 				className='cart-product__remove-btn'
 			/>
@@ -53,10 +53,10 @@ export const CartProduct: React.FC<CartProductProps> = ({ item }) => {
 				<Counter
 					count={count}
 					increase={() => {
-						increase(item);
+						increase(item)
 					}}
 					decrease={() => {
-						decrease(item);
+						decrease(item)
 					}}
 				/>
 			</div>
@@ -66,5 +66,5 @@ export const CartProduct: React.FC<CartProductProps> = ({ item }) => {
 				</div>
 			)}
 		</div>
-	);
-};
+	)
+}
