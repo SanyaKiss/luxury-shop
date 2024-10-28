@@ -29,6 +29,7 @@
     "./cypress.config.ts",
     "cypress"
   ],
+  
   "references": [
     {
       "path": "./tsconfig.node.json"

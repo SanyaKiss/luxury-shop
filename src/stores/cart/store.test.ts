@@ -1,5 +1,6 @@
 import { act, renderHook } from '@testing-library/react'
 import { useCart } from './store'
+import { expect } from '@jest/globals'
 
 const initializeCart = () => {
 	act(() => {
