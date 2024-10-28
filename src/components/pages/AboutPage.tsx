@@ -1,12 +1,12 @@
-import React from 'react';
-import { Heading } from '../UI/Heading';
-import { About } from '../layout/About';
-import { Features } from '../layout/Features';
-import { SignUp } from '../layout/SignUp';
-import { useAuth } from '../../context/AuthProvider';
+import React from 'react'
+import { Heading } from '../UI/Heading'
+import { About } from '../layout/About'
+import { Features } from '../layout/Features'
+import { SignUp } from '../layout/SignUp'
+import { useAuth } from '../../context/AuthProvider'
 
 export const AboutPage: React.FC = () => {
-	const { user } = useAuth();
+	const { user } = useAuth()
 	return (
 		<>
 			<Heading
@@ -36,5 +36,5 @@ export const AboutPage: React.FC = () => {
 			<Features />
 			{user == null && <SignUp />}
 		</>
-	);
-};
+	)
+}
